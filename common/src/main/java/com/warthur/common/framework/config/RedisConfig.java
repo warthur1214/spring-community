@@ -27,7 +27,6 @@ public class RedisConfig extends CachingConfigurerSupport {
 
     /**
      * 生成key的策略
-     * @return
      */
     @Bean
     public KeyGenerator keyGenerator() {
@@ -47,8 +46,7 @@ public class RedisConfig extends CachingConfigurerSupport {
      */
     @Bean
     public CacheManager cacheManager(RedisTemplate redisTemplate) {
-        RedisCacheManager rcm = new RedisCacheManager(redisTemplate);
-        return rcm;
+        return new RedisCacheManager(redisTemplate);
     }
 
     /**
