@@ -1,0 +1,23 @@
+server:
+  port: 8763
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: native
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 10
+    lease-renewal-interval-in-seconds: 30
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+
+logging:
+  file: logs/config-server.log
+  level: info

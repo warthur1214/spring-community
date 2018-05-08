@@ -1,0 +1,155 @@
+2018-05-08 12:53:06.809  INFO 15740 --- [main] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@3972a855: startup date [Tue May 08 12:53:06 CST 2018]; root of context hierarchy
+2018-05-08 12:53:06.999  INFO 15740 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-05-08 12:53:07.036  INFO 15740 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$4fd48e8b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-08 12:53:08.905  INFO 15740 --- [main] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at: http://localhost:8763/
+2018-05-08 12:53:10.528  INFO 15740 --- [main] c.c.c.ConfigServicePropertySourceLocator : Located environment: name=wechat-server, profiles=[dev], label=wechat-server, version=null, state=null
+2018-05-08 12:53:10.529  INFO 15740 --- [main] b.c.PropertySourceBootstrapConfiguration : Located property source: CompositePropertySource [name='configService', propertySources=[]]
+2018-05-08 12:53:10.603  INFO 15740 --- [main] com.warthur.wechat.WechatApplication     : No active profile set, falling back to default profiles: default
+2018-05-08 12:53:10.617  INFO 15740 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@50fe837a: startup date [Tue May 08 12:53:10 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@3972a855
+2018-05-08 12:53:10.982  WARN 15740 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.warthur.wechat]' package. Please check your configuration.
+2018-05-08 12:53:11.130  INFO 15740 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=7b697940-d076-3ca1-9c5e-166b47c3cb14
+2018-05-08 12:53:11.139  INFO 15740 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-05-08 12:53:11.261  INFO 15740 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$33ba8b8e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-08 12:53:11.358  INFO 15740 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$4fd48e8b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-08 12:53:11.645  INFO 15740 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 61070 (http)
+2018-05-08 12:53:11.654  INFO 15740 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-05-08 12:53:11.655  INFO 15740 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.27
+2018-05-08 12:53:11.806  INFO 15740 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-05-08 12:53:11.807  INFO 15740 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1190 ms
+2018-05-08 12:53:11.960  INFO 15740 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-05-08 12:53:11.964  INFO 15740 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-05-08 12:53:11.965  INFO 15740 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-05-08 12:53:11.965  INFO 15740 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-05-08 12:53:11.965  INFO 15740 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-05-08 12:53:12.141  WARN 15740 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-05-08 12:53:12.141  INFO 15740 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2018-05-08 12:53:12.144  WARN 15740 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-05-08 12:53:12.144  INFO 15740 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2018-05-08 12:53:12.361  INFO 15740 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@50fe837a: startup date [Tue May 08 12:53:10 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@3972a855
+2018-05-08 12:53:12.410  INFO 15740 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-05-08 12:53:12.410  INFO 15740 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-05-08 12:53:12.443  INFO 15740 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-08 12:53:12.443  INFO 15740 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-08 12:53:12.482  INFO 15740 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-08 12:53:14.221  WARN 15740 --- [main] ationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Tomcat.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.tomcat.jdbc.pool.DataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Cannot determine embedded database driver class for database type NONE. If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (no profiles are currently active).
+2018-05-08 12:53:14.229  INFO 15740 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2018-05-08 12:53:14.257  INFO 15740 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2018-05-08 12:53:14.897  INFO 15740 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2018-05-08 12:53:14.897  INFO 15740 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2018-05-08 12:53:14.971  INFO 15740 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2018-05-08 12:53:14.972  INFO 15740 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2018-05-08 12:53:15.149  INFO 15740 --- [main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2018-05-08 12:53:15.364  INFO 15740 --- [main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2018-05-08 12:53:15.365  INFO 15740 --- [main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2018-05-08 12:53:15.365  INFO 15740 --- [main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2018-05-08 12:53:15.365  INFO 15740 --- [main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2018-05-08 12:53:15.365  INFO 15740 --- [main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2018-05-08 12:53:15.365  INFO 15740 --- [main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2018-05-08 12:53:15.365  INFO 15740 --- [main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2018-05-08 12:53:15.460  INFO 15740 --- [main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2018-05-08 12:53:15.462  INFO 15740 --- [main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2018-05-08 12:53:15.463  INFO 15740 --- [main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2018-05-08 12:53:15.466  INFO 15740 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1525755195465 with initial instances count: 2
+2018-05-08 12:53:15.472  INFO 15740 --- [main] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2018-05-08 12:53:15.474  INFO 15740 --- [main] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2018-05-08 12:53:15.486  INFO 15740 --- [main] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_WECHAT-SERVER/warthur:wechat-server:61070 - deregister  status: 404
+2018-05-08 12:53:15.569  INFO 15740 --- [main] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2018-05-08 12:53:15.590  WARN 15740 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-05-08 12:53:15.590  INFO 15740 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2018-05-08 12:53:15.593  INFO 15740 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2018-05-08 12:53:15.618  INFO 15740 --- [main] utoConfigurationReportLoggingInitializer : 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2018-05-08 12:53:15.624 ERROR 15740 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Cannot determine embedded database driver class for database type NONE
+
+Action:
+
+If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (no profiles are currently active).
+
+2018-05-08 13:01:16.720  INFO 6044 --- [main] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@77971bbf: startup date [Tue May 08 13:01:16 CST 2018]; root of context hierarchy
+2018-05-08 13:01:17.215  INFO 6044 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-05-08 13:01:17.261  INFO 6044 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$d6b9e66e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-08 13:01:19.433  INFO 6044 --- [main] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at: http://localhost:8763/
+2018-05-08 13:01:21.188  INFO 6044 --- [main] c.c.c.ConfigServicePropertySourceLocator : Located environment: name=wechat-server, profiles=[dev], label=wechat-server, version=null, state=null
+2018-05-08 13:01:21.189  INFO 6044 --- [main] b.c.PropertySourceBootstrapConfiguration : Located property source: CompositePropertySource [name='configService', propertySources=[]]
+2018-05-08 13:01:21.226  INFO 6044 --- [main] com.warthur.wechat.WechatApplication     : No active profile set, falling back to default profiles: default
+2018-05-08 13:01:21.253  INFO 6044 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@35e246b2: startup date [Tue May 08 13:01:21 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@77971bbf
+2018-05-08 13:01:22.120  WARN 6044 --- [main] ssPathScanningCandidateComponentProvider : No MyBatis mapper was found in '[com.warthur.wechat]' package. Please check your configuration.
+2018-05-08 13:01:22.221  INFO 6044 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-05-08 13:01:22.622  INFO 6044 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=649a24bb-897e-30e9-9582-b062065b9838
+2018-05-08 13:01:22.636  INFO 6044 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-05-08 13:01:22.856  INFO 6044 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$ba9fe371] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-08 13:01:23.169  INFO 6044 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$d6b9e66e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-08 13:01:23.950  INFO 6044 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 61070 (http)
+2018-05-08 13:01:23.970  INFO 6044 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-05-08 13:01:23.971  INFO 6044 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.27
+2018-05-08 13:01:24.244  INFO 6044 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-05-08 13:01:24.245  INFO 6044 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2992 ms
+2018-05-08 13:01:24.452  INFO 6044 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-05-08 13:01:24.459  INFO 6044 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-05-08 13:01:24.460  INFO 6044 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-05-08 13:01:24.460  INFO 6044 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-05-08 13:01:24.460  INFO 6044 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-05-08 13:01:24.791  WARN 6044 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-05-08 13:01:24.791  INFO 6044 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2018-05-08 13:01:24.799  WARN 6044 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-05-08 13:01:24.799  INFO 6044 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2018-05-08 13:01:25.258  INFO 6044 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@35e246b2: startup date [Tue May 08 13:01:21 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@77971bbf
+2018-05-08 13:01:25.360  INFO 6044 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-05-08 13:01:25.361  INFO 6044 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-05-08 13:01:25.405  INFO 6044 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-08 13:01:25.406  INFO 6044 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-08 13:01:25.453  INFO 6044 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-08 13:01:27.913  WARN 6044 --- [main] arterDeprecationWarningAutoConfiguration : spring-boot-starter-redis is deprecated as of Spring Boot 1.4, please migrate to spring-boot-starter-data-redis
+2018-05-08 13:01:29.535  WARN 6044 --- [main] arterDeprecationWarningAutoConfiguration : spring-cloud-starter-eureka is deprecated as of Spring Cloud Netflix 1.4.0, please migrate to spring-cloud-starter-netflix-eureka
+2018-05-08 13:01:29.591  INFO 6044 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-05-08 13:01:29.603  INFO 6044 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'configurationPropertiesRebinder' has been autodetected for JMX exposure
+2018-05-08 13:01:29.604  INFO 6044 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'environmentManager' has been autodetected for JMX exposure
+2018-05-08 13:01:29.605  INFO 6044 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'refreshScope' has been autodetected for JMX exposure
+2018-05-08 13:01:29.607  INFO 6044 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'environmentManager': registering with JMX server as MBean [org.springframework.cloud.context.environment:name=environmentManager,type=EnvironmentManager]
+2018-05-08 13:01:29.633  INFO 6044 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'refreshScope': registering with JMX server as MBean [org.springframework.cloud.context.scope.refresh:name=refreshScope,type=RefreshScope]
+2018-05-08 13:01:29.643  INFO 6044 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'configurationPropertiesRebinder': registering with JMX server as MBean [org.springframework.cloud.context.properties:name=configurationPropertiesRebinder,context=35e246b2,type=ConfigurationPropertiesRebinder]
+2018-05-08 13:01:29.661  INFO 6044 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 0
+2018-05-08 13:01:29.675  INFO 6044 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2018-05-08 13:01:29.739  INFO 6044 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2018-05-08 13:01:29.845  INFO 6044 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2018-05-08 13:01:29.845  INFO 6044 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2018-05-08 13:01:30.033  INFO 6044 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2018-05-08 13:01:30.033  INFO 6044 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2018-05-08 13:01:30.487  INFO 6044 --- [main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2018-05-08 13:01:30.693  INFO 6044 --- [main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2018-05-08 13:01:30.693  INFO 6044 --- [main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2018-05-08 13:01:30.693  INFO 6044 --- [main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2018-05-08 13:01:30.693  INFO 6044 --- [main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2018-05-08 13:01:30.693  INFO 6044 --- [main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2018-05-08 13:01:30.693  INFO 6044 --- [main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2018-05-08 13:01:30.694  INFO 6044 --- [main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2018-05-08 13:01:30.909  INFO 6044 --- [main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2018-05-08 13:01:30.910  INFO 6044 --- [main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2018-05-08 13:01:30.914  INFO 6044 --- [main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2018-05-08 13:01:30.918  INFO 6044 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1525755690918 with initial instances count: 2
+2018-05-08 13:01:30.928  INFO 6044 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application wechat-server with eureka with status UP
+2018-05-08 13:01:30.929  INFO 6044 --- [main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1525755690929, current=UP, previous=STARTING]
+2018-05-08 13:01:30.931  INFO 6044 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_WECHAT-SERVER/warthur:wechat-server:61070: registering service...
+2018-05-08 13:01:31.000  INFO 6044 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_WECHAT-SERVER/warthur:wechat-server:61070 - registration status: 204
+2018-05-08 13:01:31.072  INFO 6044 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 61070 (http)
+2018-05-08 13:01:31.072  INFO 6044 --- [main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 61070
+2018-05-08 13:01:31.078  INFO 6044 --- [main] com.warthur.wechat.WechatApplication     : Started WechatApplication in 17.102 seconds (JVM running for 21.431)
+2018-05-08 13:06:30.697  INFO 6044 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2018-05-08 13:11:30.698  INFO 6044 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2018-05-08 13:16:30.699  INFO 6044 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2018-05-08 13:21:30.701  INFO 6044 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2018-05-08 13:26:30.701  INFO 6044 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2018-05-08 13:31:30.702  INFO 6044 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2018-05-08 13:36:30.703  INFO 6044 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2018-05-08 13:41:30.705  INFO 6044 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2018-05-08 13:46:30.707  INFO 6044 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2018-05-08 13:51:30.708  INFO 6044 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
