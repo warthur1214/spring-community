@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.warthur.common.Constants;
 import com.warthur.common.Error;
-import com.warthur.common.framework.annotation.Authorizer;
+import com.warthur.common.framework.annotation.AuthExclude;
 import com.warthur.common.util.JwtUtil;
 import com.warthur.common.util.ResponseUtil;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -28,8 +28,8 @@ public class JwtInterceptor implements HandlerInterceptor {
 		}
 		HandlerMethod handlerMethod = (HandlerMethod) handler;
 		//无需授权注解标记 类级+方法级
-		if (handlerMethod.getBean().getClass().getAnnotation(Authorizer.class) == null ||
-				handlerMethod.getMethod().getAnnotation(Authorizer.class) == null) {
+		if (handlerMethod.getBean().getClass().getAnnotation(AuthExclude.class) == null ||
+				handlerMethod.getMethod().getAnnotation(AuthExclude.class) == null) {
 			log.info("无需校验token可直接访问!" + request.getServletPath());
 			return true;
 		}
