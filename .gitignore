@@ -1,1 +1,13 @@
-logs/*
+
+common/src/test/
+logs/
+spring-app/spring-app.iml
+spring-community.iml
+spring-eureka-config/spring-eureka-config.iml
+spring-eureka-config/src/test/
+spring-eureka-server/spring-eureka-server.iml
+spring-eureka-server/src/test/
+spring-eureka-zuul/spring-eureka-zuul.iml
+spring-eureka-zuul/src/test/
+spring-wechat/spring-wechat.iml
+spring-wechat/src/test/
