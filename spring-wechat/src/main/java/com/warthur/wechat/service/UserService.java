@@ -9,4 +9,6 @@ import com.warthur.wechat.pojo.param.LoginParam;
 public interface UserService {
 
 	Response login(LoginParam reqParam);
+
+	Response sendSmsMessage();
 }

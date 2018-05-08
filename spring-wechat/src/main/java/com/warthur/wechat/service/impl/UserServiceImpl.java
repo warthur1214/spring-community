@@ -27,4 +27,9 @@ public class UserServiceImpl implements UserService {
 		// 返回userInfo + jwtToken
 		return null;
 	}
+
+	@Override
+	public Response sendSmsMessage() {
+		return null;
+	}
 }
