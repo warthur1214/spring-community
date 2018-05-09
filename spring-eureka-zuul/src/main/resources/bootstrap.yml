@@ -10,7 +10,7 @@ server:
   port: 8762
 eureka:
   instance:
-    prefer-ip-address: true
+    prefer-ip-address: false
     lease-expiration-duration-in-seconds: 10
     lease-renewal-interval-in-seconds: 30
   client:

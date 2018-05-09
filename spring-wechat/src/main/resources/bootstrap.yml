@@ -1,12 +1,11 @@
 eureka:
   instance:
-    prefer-ip-address: false
+    prefer-ip-address: true
     lease-expiration-duration-in-seconds: 10
     lease-renewal-interval-in-seconds: 30
-    virtual-host-name: eureka.server
   client:
     service-url:
-      default-zone: http://eureka.server:8761/eureka
+      default-zone: http://localhost:8761/eureka
     register-with-eureka: true
     fetch-registry: true
 
@@ -18,7 +17,7 @@ spring:
     name: wechat-server
   cloud:
     config:
-      uri: http://eureka.server:8763/
+      uri: http://localhost:8763/
       profile: dev
       label: ${spring.application.name}
   redis:
