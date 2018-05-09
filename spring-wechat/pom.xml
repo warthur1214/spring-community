@@ -9,6 +9,7 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<packaging>jar</packaging>
+	<version>1.1.1-SNAPSHOT</version>
 
 	<artifactId>spring-wechat</artifactId>
 
@@ -47,7 +48,7 @@
 		<dependency>
 			<groupId>com.warthur.community</groupId>
 			<artifactId>common</artifactId>
-			<version>${project.version}</version>
+			<version>${parent.version}</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>spring-boot-starter-web</artifactId>
