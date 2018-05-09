@@ -12,10 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by warthur on 2018/5/8.
@@ -43,6 +40,22 @@ public class UserController extends BaseController {
 		} catch (WechatException e) {
 			log.error("登录失败：{}", e.getMessage());
 			return ResponseUtil.error("登录失败: " + e.getMessage());
+		}
+
+		return response;
+	}
+
+	@RequestMapping(value = "/sms/send/{tel}", method = RequestMethod.POST)
+	@ApiOperation("发送短信验证码接口")
+	@AuthExclude
+	public Response sendSmsMessage(@PathVariable String tel) {
+		Response response;
+
+		try {
+			response = userService.sendSmsMessage();
+		} catch (WechatException e) {
+			log.error("发送短信失败：{}", e.getMessage());
+			return ResponseUtil.error("发送短信失败: " + e.getMessage());
 		}
 
 		return response;
