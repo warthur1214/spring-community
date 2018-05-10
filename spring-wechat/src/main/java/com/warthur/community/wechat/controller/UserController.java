@@ -52,6 +52,7 @@ public class UserController extends BaseController {
 		Response response;
 
 		try {
+			Object o = request.getHeaderNames();
 			response = userService.sendSmsMessage();
 		} catch (WechatException e) {
 			log.error("发送短信失败：{}", e.getMessage());
