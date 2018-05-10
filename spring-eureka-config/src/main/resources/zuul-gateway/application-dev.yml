@@ -5,11 +5,11 @@ zuul:
     wechat-service:
       path: /wx/**
       service-id: wechat-server
-      sensitive-headers:
-      custom-sensitive-headers: true
   host:
     socket-timeout-millis: 60000
     connect-timeout-millis: 10000
+  add-host-header: true
+  sensitive-headers:
 
 # forwarding error timeout; 驼峰配置
 ribbon:

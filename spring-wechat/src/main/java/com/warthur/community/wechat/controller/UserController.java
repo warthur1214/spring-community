@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @Slf4j
-@RequestMapping("/user")
+@RequestMapping("/users")
 @Api("用户控制器")
 public class UserController extends BaseController {
 
@@ -45,14 +45,13 @@ public class UserController extends BaseController {
 		return response;
 	}
 
-	@RequestMapping(value = "/sms/send/{tel}")
+	@RequestMapping(value = "/sms/{tel}")
 	@ApiOperation("发送短信验证码接口")
 	@AuthExclude
 	public Response sendSmsMessage(@PathVariable String tel) {
 		Response response;
 
 		try {
-			Object o = request.getHeaderNames();
 			response = userService.sendSmsMessage();
 		} catch (WechatException e) {
 			log.error("发送短信失败：{}", e.getMessage());
