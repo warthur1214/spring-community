@@ -1,6 +1,7 @@
 package com.warthur.community.wechat.service.impl;
 
 import com.warthur.community.common.Response;
+import com.warthur.community.common.util.ResponseUtil;
 import com.warthur.community.wechat.pojo.param.LoginParam;
 import com.warthur.community.wechat.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +31,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Response sendSmsMessage() {
-		return null;
+		return ResponseUtil.success();
 	}
 }

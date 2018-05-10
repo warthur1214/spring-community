@@ -26,7 +26,7 @@ public class UserController extends BaseController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
 	@ApiOperation("登录接口")
 	@AuthExclude
 	public Response login(@Validated @RequestBody LoginParam reqParam, BindingResult result) {
@@ -45,7 +45,7 @@ public class UserController extends BaseController {
 		return response;
 	}
 
-	@RequestMapping(value = "/sms/send/{tel}", method = RequestMethod.POST)
+	@RequestMapping(value = "/sms/send/{tel}")
 	@ApiOperation("发送短信验证码接口")
 	@AuthExclude
 	public Response sendSmsMessage(@PathVariable String tel) {

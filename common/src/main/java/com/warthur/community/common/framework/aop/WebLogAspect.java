@@ -20,7 +20,7 @@ import java.util.Arrays;
 @Order(-500)
 public class WebLogAspect {
 
-	@Pointcut("execution(public * com.warthur.*.controller..*(..))")
+	@Pointcut("execution(public * com.warthur.community..*.controller..*(..))")
 	public void webLog() {}
 
 	@Before("webLog()")
