@@ -15,25 +15,13 @@ server:
 spring:
   application:
     name: wechat-server
+  profiles:
+    active: dev
   cloud:
     config:
-      uri: http://localhost:8763/
+      uri: http://localhost:8762/
       profile: dev
       label: ${spring.application.name}
-  redis:
-    host: 47.100.237.208
-    password: 084a08767ae2e8d4a2cbc6209a3a98c8
-    port: 6379
-    pool:
-      max-idle: 100
-      min-idle: 1
-      max-active: 1000
-      max-wait: -1
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.100.237.208:3306/community?serverTimezone=UTC&noAccessToProcedureBodies=true&useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=utf8&useSSL=true
-    username: root
-    password: 1qaz@WSX1qaz
 
 logging:
   file: logs/wechat-server.log
