@@ -28,7 +28,7 @@ public class WebExceptionHandler {
         return ResponseUtil.error(e.getCode(), e.getMessage());
     }
 
-    @ExceptionHandler(value = {ServerException.class, Exception.class})
+    @ExceptionHandler(value = {ServerException.class})
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public void serverExcptionGet(ServerException e) {
         log.error(e);

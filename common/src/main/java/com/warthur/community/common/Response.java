@@ -17,17 +17,19 @@ public class Response<T> {
     /**
      * code 0 - 正确； 非0为错误码
      */
-    private int code = 0;
+    private int status = 200;
     private String message = "请求成功";
-    private T data ;
-    
-    public Response(Error errorCode) {
-    	this.code = errorCode.getCode();
-    	this.message = errorCode.getMsg();
+    private T data = null;
+    private T desc = null;
+
+    public Response(int code, String message) {
+        this.status = code;
+        this.message = message;
     }
 
-    public Response(T data) {
-        this(Error.REQUEST_SUCCESS);
+    public Response(int status, String message, T data) {
+        this.status = status;
+        this.message = message;
         this.data = data;
     }
 
@@ -35,15 +37,4 @@ public class Response<T> {
         this(res.getCode(), res.getMsg(), data);
     }
 
-    public Response(int code, String message) {
-        this(code, message, null);
-    }
-
-    public static Response error(String message) {
-        return new Response(1, message);
-    }
-
-    public static Response error(int code,String message) {
-        return new Response(code,message);
-    }
 }

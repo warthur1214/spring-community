@@ -2,7 +2,7 @@ package com.warthur.community.wechat.service.impl;
 
 import com.warthur.community.common.Response;
 import com.warthur.community.common.util.ResponseUtil;
-import com.warthur.community.wechat.pojo.param.LoginParam;
+import com.warthur.community.wechat.pojo.param.UserParam;
 import com.warthur.community.wechat.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -15,22 +15,31 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
 	@Override
-	public Response login(LoginParam reqParam) {
-
-		// 校验短信验证码
+	public Response login(String code) {
 
 		// 根据code获取openid
 
-		// 根据openid存储手机号
+		// 根据openid查询userInfo
 
-		// 生成secret
+		// 根据userInfo查询token，有效则返回userInfo+token+freshToken
+
+		// 生成签名密钥，token，refreshToken并存储到redis
 
 		// 返回userInfo + jwtToken
-		return null;
+		return ResponseUtil.success();
 	}
 
 	@Override
-	public Response sendSmsMessage() {
+	public Response addUserByOpenId(UserParam reqParam) {
+		// 校验短信验证码
+
+		// 根据code获取openId
+
+		// 存储用户信息
+
+		// 生成签名密钥，token，refreshToken并存储到redis
+
+		// 返回userInfo + jwtToken
 		return ResponseUtil.success();
 	}
 }

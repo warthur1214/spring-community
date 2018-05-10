@@ -36,13 +36,13 @@ public class SwaggerConfig {
 
 		return new Docket(DocumentationType.SWAGGER_2)
 				.globalOperationParameters(aParameters)
-				.groupName("wechat")
+				.groupName("community")
 				.genericModelSubstitutes(Optional.class)
 				.useDefaultResponseMessages(false)
 				.forCodeGeneration(true)
 				.pathMapping("/")// api测试请求地址
 				.select()
-				.paths(PathSelectors.regex("/*"))// 过滤的接口
+				.paths(PathSelectors.regex("/.*"))// 过滤的接口
 				.build();
 	}
 }

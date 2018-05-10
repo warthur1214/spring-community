@@ -11,7 +11,7 @@ eureka:
 
 server:
   port: 61070
-
+  context-path: /wx
 spring:
   application:
     name: wechat-server

@@ -3,11 +3,8 @@ package com.warthur.community.common.util;
 
 import com.warthur.community.common.Error;
 import com.warthur.community.common.Response;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import org.springframework.validation.BindingResult;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,35 +15,11 @@ import java.util.stream.Collectors;
  */
 public class ResponseUtil {
 
-    @AllArgsConstructor
-    @Data
-    private static class ResponseData {
-        private int pageNum;
-        private int totalPageSize;
-        private Object data;
-    }
-
     public static Response success(Object object) {
         return new Response<>(Error.REQUEST_SUCCESS, object);
     }
 
     public static Response success() {
-        return success(null);
-    }
-
-    public static Response successList() {
-        return success(new ArrayList<>());
-    }
-
-    public static Response sucessPageList(final Integer pageNum, final Integer totalSize) {
-        return sucessPageList(pageNum, totalSize, new ArrayList<>());
-    }
-
-    public static Response sucessPageList(final Integer pageNum, final Integer totalSize, List<Object> list) {
-        return success(new ResponseData(pageNum, totalSize, list));
-    }
-
-    public static Response successMap() {
         return success(new HashMap<>());
     }
 
@@ -63,7 +36,7 @@ public class ResponseUtil {
     }
 
     public static Response error(String message) {
-        return error(1, message);
+        return error(Error.REQUEST_ERROR.getCode(), message);
     }
 
     public static Response error(BindingResult result) {
@@ -71,7 +44,7 @@ public class ResponseUtil {
                 .map(fieldError -> fieldError.getField() + fieldError.getDefaultMessage())
                 .sorted()
                 .collect(Collectors.toList());
-        return error(Error.REQUEST_ERROR.getCode(), Error.REQUEST_ERROR.getMsg(), errors);
+        return new Response<>(Error.PARAMS_ERROR.getCode(), Error.PARAMS_ERROR.getMsg(), null, errors);
     }
 
 }

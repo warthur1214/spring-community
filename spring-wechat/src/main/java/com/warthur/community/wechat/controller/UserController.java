@@ -1,14 +1,16 @@
 package com.warthur.community.wechat.controller;
 
+import com.warthur.community.common.Error;
 import com.warthur.community.common.Response;
 import com.warthur.community.common.framework.annotation.AuthExclude;
 import com.warthur.community.common.framework.exception.WechatException;
 import com.warthur.community.common.util.ResponseUtil;
-import com.warthur.community.wechat.pojo.param.LoginParam;
+import com.warthur.community.wechat.pojo.param.UserParam;
 import com.warthur.community.wechat.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -19,24 +21,23 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @Slf4j
-@RequestMapping("/users")
-@Api("用户控制器")
+@Api(description = "用户控制器")
 public class UserController extends BaseController {
 
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
+	@GetMapping(value = "/users/{code}")
 	@ApiOperation("登录接口")
 	@AuthExclude
-	public Response login(@Validated @RequestBody LoginParam reqParam, BindingResult result) {
+	public Response login(@PathVariable String code) {
 		Response response;
 
 		try {
-			if (result.hasErrors()) {
-				return ResponseUtil.error(result);
+			if (StringUtils.isEmpty(code)) {
+				return ResponseUtil.error(Error.PARAMS_ERROR);
 			}
-			response = userService.login(reqParam);
+			response = userService.login(code);
 		} catch (WechatException e) {
 			log.error("登录失败：{}", e.getMessage());
 			return ResponseUtil.error("登录失败: " + e.getMessage());
@@ -45,19 +46,23 @@ public class UserController extends BaseController {
 		return response;
 	}
 
-	@RequestMapping(value = "/sms/{tel}")
-	@ApiOperation("发送短信验证码接口")
+	@PostMapping("/users")
+	@ApiOperation("注册绑定用户手机号")
 	@AuthExclude
-	public Response sendSmsMessage(@PathVariable String tel) {
+	public Response addUserByMobile(@Validated @RequestBody UserParam reqParam, BindingResult result) {
 		Response response;
 
 		try {
-			response = userService.sendSmsMessage();
+			if (result.hasErrors()) {
+				return ResponseUtil.error(result);
+			}
+			response = userService.addUserByOpenId(reqParam);
 		} catch (WechatException e) {
-			log.error("发送短信失败：{}", e.getMessage());
-			return ResponseUtil.error("发送短信失败: " + e.getMessage());
+			log.error("登录失败：{}", e.getMessage());
+			return ResponseUtil.error("登录失败: " + e.getMessage());
 		}
 
 		return response;
 	}
+
 }

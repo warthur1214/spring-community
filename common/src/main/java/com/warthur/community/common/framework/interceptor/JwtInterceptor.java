@@ -48,10 +48,10 @@ public class JwtInterceptor implements HandlerInterceptor {
 			return true;
 		} catch (SignatureException e) {
 			log.error("授权token异常：" + e.getMessage());
-			response.getWriter().print(JSON.toJSONString(ResponseUtil.error(403, e.getMessage())));
+			response.getWriter().print(JSON.toJSONString(ResponseUtil.error(Error.UNLOGIN_ERROR)));
 		} catch (ExpiredJwtException e) {
 			log.error("授权检查过期：" + e.getMessage());
-			response.getWriter().print(JSON.toJSONString(ResponseUtil.error(Error.ILLEGAL_TOKEN_ERROR)));
+			response.getWriter().print(JSON.toJSONString(ResponseUtil.error(Error.UNLOGIN_ERROR)));
 		}
 		response.setHeader("Content-Type", "application/json;charset=UTF-8");
 		return false;
