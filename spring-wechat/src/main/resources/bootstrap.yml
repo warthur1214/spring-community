@@ -27,7 +27,7 @@ logging:
 
 mybatis:
   type-aliases-package: com.warthur.community.wechat.pojo.dto
-  mapper-locations: classpath*:mybatis/*.xml
+  mapper-locations: classpath*:mybatis/*DAO.xml
   configuration:
     mapUnderscoreToCamelCase: true
     lazyLoadingEnabled: true
