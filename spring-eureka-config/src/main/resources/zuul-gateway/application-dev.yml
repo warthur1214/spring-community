@@ -4,7 +4,6 @@ zuul:
   routes:
     wechat-server:
       path: /wx/**
-      url: http://localhost:61070/wx
       serviceId: wechat-server
   host:
     socket-timeout-millis: 60000
