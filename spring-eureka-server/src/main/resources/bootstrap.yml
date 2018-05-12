@@ -2,8 +2,8 @@ server:
   port: 8761
 eureka:
   instance:
-    prefer-ip-address: true
     hostname: localhost
+    prefer-ip-address: false
   server:
     eviction-interval-timer-in-ms: 4000
   client:

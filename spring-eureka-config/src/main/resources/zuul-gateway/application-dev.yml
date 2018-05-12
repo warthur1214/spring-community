@@ -4,18 +4,18 @@ zuul:
   routes:
     wechat-server:
       path: /wx/**
-      service-id: wechat-server
+      url: http://localhost:61070/wx
+      serviceId: wechat-server
   host:
     socket-timeout-millis: 60000
     connect-timeout-millis: 10000
-#  add-host-header: true
+  add-host-header: true
   sensitive-headers:
 
 # forwarding error timeout; 驼峰配置
 ribbon:
   ReadTimeout: 30000
   ConnectTimeout: 30000
-
 hystrix:
   command:
     default:
