@@ -58,8 +58,8 @@ public class UserController extends BaseController {
 			}
 			response = userService.addUserByOpenId(reqParam);
 		} catch (WechatException e) {
-			log.error("登录失败：{}", e.getMessage());
-			return ResponseUtil.error("登录失败: " + e.getMessage());
+			log.error("注册失败：{}", e.getMessage());
+			return ResponseUtil.error("注册失败: " + e.getMessage());
 		}
 
 		return response;

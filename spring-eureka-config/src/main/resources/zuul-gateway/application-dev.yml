@@ -2,13 +2,13 @@
 zuul:
   ribbon-isolation-strategy: thread
   routes:
-    wechat-service:
+    wechat-server:
       path: /wx/**
       service-id: wechat-server
   host:
     socket-timeout-millis: 60000
     connect-timeout-millis: 10000
-  add-host-header: true
+#  add-host-header: true
   sensitive-headers:
 
 # forwarding error timeout; 驼峰配置
