@@ -32,4 +32,3 @@ mybatis:
     mapUnderscoreToCamelCase: true
     lazyLoadingEnabled: true
     jdbcTypeForNull: OTHER
-
