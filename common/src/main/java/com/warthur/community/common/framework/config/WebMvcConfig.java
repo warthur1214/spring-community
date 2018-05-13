@@ -45,7 +45,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter implements EmbeddedSer
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         log.info("==拦截器注册==");
-        registry.addInterceptor(new JwtInterceptor()).addPathPatterns("/api/**");//权限验证拦截器
+        registry.addInterceptor(new JwtInterceptor()).addPathPatterns("/**");//权限验证拦截器
 
         super.addInterceptors(registry);
     }

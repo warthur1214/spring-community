@@ -20,7 +20,8 @@ public enum Error {
 	INTERNAL_ERROR(500, "系统错误"),
 
 	REQUEST_ERROR(-1000, "处理失败"),
-	VERSION_NULL_ERROR(-1001, "请求Version非法");
+	VERSION_ILLEGAL(-1001, "请求Version非法"),
+	SIGNATURE_ILLEGAL(-1002, "请求signature非法");
 
 	private Integer code;
 	private String msg;

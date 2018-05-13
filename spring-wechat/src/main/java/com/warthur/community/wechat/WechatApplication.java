@@ -17,7 +17,6 @@ import org.springframework.web.client.RestTemplate;
 @EnableAsync
 @EnableScheduling
 @ComponentScan({"com.warthur.community.common.framework", "com.warthur.community.wechat"})
-@MapperScan("com.warthur.community.wechat.dao")
 public class WechatApplication {
 
 	@Bean

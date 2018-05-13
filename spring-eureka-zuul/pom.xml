@@ -42,6 +42,12 @@
 			<groupId>com.warthur.community</groupId>
 			<artifactId>common</artifactId>
 			<version>${project.parent.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-data-redis</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>

@@ -66,7 +66,7 @@ public class AuthZuulFilter extends ZuulFilter {
 
             ctx.setSendZuulResponse(false); //不进行路由
             try {
-                response.getWriter().write(ResponseUtil.error(Error.VERSION_NULL_ERROR).toString()); //响应体
+                response.getWriter().write(ResponseUtil.error(Error.VERSION_ILLEGAL).toString()); //响应体
             } catch (IOException e) {
                 log.error("response io异常", e);
             }

@@ -1,11 +1,8 @@
 package com.warthur.community.common.framework.interceptor;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.warthur.community.common.Constants;
 import com.warthur.community.common.Error;
 import com.warthur.community.common.framework.annotation.AuthExclude;
-import com.warthur.community.common.util.JwtUtil;
 import com.warthur.community.common.util.ResponseUtil;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.SignatureException;
@@ -14,7 +11,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import weixin.popular.bean.sns.Jscode2sessionResult;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,22 +24,20 @@ public class JwtInterceptor implements HandlerInterceptor {
 		}
 		HandlerMethod handlerMethod = (HandlerMethod) handler;
 		//无需授权注解标记 类级+方法级
-		if (handlerMethod.getBean().getClass().getAnnotation(AuthExclude.class) == null ||
-				handlerMethod.getMethod().getAnnotation(AuthExclude.class) == null) {
+		if (handlerMethod.getBean().getClass().getAnnotation(AuthExclude.class) != null &&
+				handlerMethod.getMethod().getAnnotation(AuthExclude.class) != null) {
 			log.info("无需校验token可直接访问!" + request.getServletPath());
 			return true;
 		}
 
+		response.setHeader("Content-Type", "application/json;charset=UTF-8");
+
 		final String authorizationToken = request.getHeader(Constants.JWT_TOKEN_HEADER);
-		log.info("authHeader=" + authorizationToken);
+		log.info("Authorization：{}", authorizationToken);
 		try {
 			if (StringUtils.isEmpty(authorizationToken)) {
 				throw new SignatureException("请求头Authorization缺失！");
 			}
-
-			Jscode2sessionResult result = JSONObject.parseObject(JwtUtil.decryJwtToken(authorizationToken), Jscode2sessionResult.class);
-
-			log.info("openId: {}, session_key: {}", result.getOpenid(), result.getSession_key());
 
 			return true;
 		} catch (SignatureException e) {
