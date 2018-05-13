@@ -1,5 +1,6 @@
 package com.warthur.community.common;
 
+import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,6 +36,10 @@ public class Response<T> {
 
     public Response(Error res, T data) {
         this(res.getCode(), res.getMsg(), data);
+    }
+
+    public String toString() {
+        return JSON.toJSONString(this);
     }
 
 }

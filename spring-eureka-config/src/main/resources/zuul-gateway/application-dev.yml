@@ -1,6 +1,10 @@
 
 zuul:
   ribbon-isolation-strategy: thread
+  request:
+    versions:
+      - v1
+      - v2
   routes:
     wechat-server:
       path: /wx/**
@@ -15,10 +19,17 @@ zuul:
 ribbon:
   ReadTimeout: 30000
   ConnectTimeout: 30000
+
 hystrix:
   command:
     default:
       execution:
+        timeout:
+          enabled: false
         isolation:
+          strategy: THREAD
           thread:
-            timeoutInMilliseconds: 120000
+            timeoutInMilliseconds: 60000
+management:
+  security:
+    enabled: false

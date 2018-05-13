@@ -48,22 +48,22 @@ public class JwtInterceptor implements HandlerInterceptor {
 			return true;
 		} catch (SignatureException e) {
 			log.error("授权token异常：" + e.getMessage());
-			response.getWriter().print(JSON.toJSONString(ResponseUtil.error(Error.UNLOGIN_ERROR)));
+			response.getWriter().print(ResponseUtil.error(Error.UNAUTHORIZED_ERROR).toString());
 		} catch (ExpiredJwtException e) {
 			log.error("授权检查过期：" + e.getMessage());
-			response.getWriter().print(JSON.toJSONString(ResponseUtil.error(Error.UNLOGIN_ERROR)));
+			response.getWriter().print(ResponseUtil.error(Error.FORBIDDEN_ERROR).toString());
 		}
 		response.setHeader("Content-Type", "application/json;charset=UTF-8");
 		return false;
 	}
 
 	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) {
 
 	}
 
 	@Override
-	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception e) throws Exception {
+	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception e) {
 
 	}
 }
