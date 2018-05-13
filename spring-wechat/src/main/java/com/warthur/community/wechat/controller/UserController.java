@@ -49,7 +49,7 @@ public class UserController extends BaseController {
 	@PostMapping("/users")
 	@ApiOperation("注册绑定用户手机号")
 	@AuthExclude
-	public Response addUserByMobile(@Validated @RequestBody UserParam reqParam, BindingResult result) {
+	public Response addUser(@Validated @RequestBody UserParam reqParam, BindingResult result) {
 		Response response;
 
 		try {

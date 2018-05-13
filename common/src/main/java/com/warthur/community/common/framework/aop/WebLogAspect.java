@@ -8,13 +8,20 @@ import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Array;
+import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.List;
 
 @Component
 @Aspect
@@ -22,7 +29,12 @@ import java.util.Arrays;
 @Order(-500)
 public class WebLogAspect extends AbstractAspect {
 
-	@Pointcut("execution(public * com.warthur.community..*.controller..*(..))")
+	@Pointcut("execution(@(org.springframework.web.bind.annotation.RequestMapping || " +
+			"org.springframework.web.bind.annotation.GetMapping || " +
+			"org.springframework.web.bind.annotation.PostMapping || " +
+			"org.springframework.web.bind.annotation.PutMapping || " +
+			"org.springframework.web.bind.annotation.DeleteMapping) " +
+            "public * com.warthur.community..*.controller..*(..))")
 	public void webLog() {}
 
 	@Override
