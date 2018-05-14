@@ -1,7 +1,6 @@
 package com.warthur.community.common.framework.aop;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.base.Joiner;
 import com.warthur.community.common.Constants;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.aspectj.lang.JoinPoint;
@@ -19,9 +18,9 @@ abstract class AbstractAspect implements CommunityAspect {
         return attributes.getRequest();
     }
 
-    private Map<String, Object> handleQueryMap(JoinPoint joinPoint) {
+    private List<String> handleQueryMap(JoinPoint joinPoint) {
         HttpServletRequest request = getRequest(joinPoint);
-        Map<String, Object> requestMap = new TreeMap<>();
+        Map<String, Object> requestMap = new HashMap<>();
 
         // 获取requestBody，放入treeMap
         if ("POST".equals(request.getMethod()) || "PUT".equals(request.getMethod())) {
@@ -29,36 +28,33 @@ abstract class AbstractAspect implements CommunityAspect {
         }
 
         // 获取 query string，放入treeMap
-        requestMap.putAll(request.getParameterMap());
+        List<String> requestList = new ArrayList<>(Arrays.asList(request.getQueryString().split("&")));
 
         // 剔除signature
-        requestMap.remove("signature");
+        requestList.remove("signature=" + request.getParameter("signature"));
 
         // 复杂对象的值只拿size
         for (Map.Entry<String, Object> entry: requestMap.entrySet()) {
-
-            if (entry.getValue() instanceof String[]) {
-                List<String> values = Arrays.asList((String[]) entry.getValue());
-                entry.setValue(values.get(0));
-                if (values.size() > 1) {
-                    entry.setValue(values.size());
-                }
-            }
-
+            StringBuilder params = new StringBuilder(entry.getKey()).append("=");
             if (entry.getValue() instanceof Map) {
-                entry.setValue(((Map) entry.getValue()).size());
+                params.append(((Map) entry.getValue()).size());
+            } else if (entry.getValue() instanceof List) {
+                params.append(((List) entry.getValue()).size());
+            } else {
+                params.append(entry.getValue());
             }
-            if (entry.getValue() instanceof List) {
-                entry.setValue(((List) entry.getValue()).size());
-            }
+
+            requestList.add(params.toString());
         }
 
-        return requestMap;
+        Collections.sort(requestList);
+
+        return requestList;
     }
 
     String validate(JoinPoint joinPoint, String secret) {
-        Map<String, Object> map = handleQueryMap(joinPoint);
-        String beforeValid = secret + ":" + Base64.getEncoder().encodeToString(Joiner.on("&").withKeyValueSeparator("=").join(map).getBytes());
+        List<String> params = handleQueryMap(joinPoint);
+        String beforeValid = secret + ":" + Base64.getEncoder().encodeToString(String.join("&", params).getBytes());
         return DigestUtils.sha1Hex(beforeValid.getBytes());
     }
 

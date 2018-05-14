@@ -52,9 +52,9 @@ public class SignAuthAspect extends AbstractAspect {
 
         // 接收到请求，记录请求内容
         HttpServletRequest request = getRequest(joinPoint);
+        String authorization = request.getHeader(Constants.JWT_TOKEN_HEADER);
         String signature = request.getParameter("signature");
         String timestamp = request.getParameter("timestamp");
-        String authorization = request.getHeader(Constants.JWT_TOKEN_HEADER);
 
         // timestamp合法性校验 误差3s
         if (StringUtils.isEmpty(timestamp) || !validTimestamp(timestamp)) {
