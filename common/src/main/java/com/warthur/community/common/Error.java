@@ -21,7 +21,8 @@ public enum Error {
 
 	REQUEST_ERROR(-1000, "处理失败"),
 	VERSION_ILLEGAL(-1001, "请求Version非法"),
-	SIGNATURE_ILLEGAL(-1002, "请求signature非法");
+	SIGNATURE_ILLEGAL(-1002, "请求signature非法"),
+	TIMESTAMP_ILLEGAL(-1003, "请求signature非法");
 
 	private Integer code;
 	private String msg;

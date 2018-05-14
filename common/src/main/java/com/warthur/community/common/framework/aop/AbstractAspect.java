@@ -2,9 +2,9 @@ package com.warthur.community.common.framework.aop;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Joiner;
+import com.warthur.community.common.Constants;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.aspectj.lang.JoinPoint;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -60,5 +60,17 @@ abstract class AbstractAspect implements CommunityAspect {
         Map<String, Object> map = handleQueryMap(joinPoint);
         String beforeValid = secret + ":" + Base64.getEncoder().encodeToString(Joiner.on("&").withKeyValueSeparator("=").join(map).getBytes());
         return DigestUtils.sha1Hex(beforeValid.getBytes());
+    }
+
+    /**
+     * 判断timestamp参数与当前时间戳误差是否超过3s
+     * @param timeParam timestamp
+     * @return
+     */
+    boolean validTimestamp(String timeParam) {
+        Long ts = Long.parseLong(timeParam);
+        Long nts = System.currentTimeMillis();
+
+        return Math.abs(nts - ts) <= Constants.TIMESTAMP_DEVIATION;
     }
 }

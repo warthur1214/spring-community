@@ -3,9 +3,9 @@ package com.warthur.community.common.framework.aop;
 import com.warthur.community.common.Constants;
 import com.warthur.community.common.Error;
 import com.warthur.community.common.framework.cache.DataRedisCache;
-import com.warthur.community.common.framework.cache.StringRedisCache;
 import com.warthur.community.common.util.ResponseUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -16,7 +16,6 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
 
 @Component
 @Aspect
@@ -54,14 +53,21 @@ public class SignAuthAspect extends AbstractAspect {
         // 接收到请求，记录请求内容
         HttpServletRequest request = getRequest(joinPoint);
         String signature = request.getParameter("signature");
+        String timestamp = request.getParameter("timestamp");
         String authorization = request.getHeader(Constants.JWT_TOKEN_HEADER);
+
+        // timestamp合法性校验 误差3s
+        if (StringUtils.isEmpty(timestamp) || !validTimestamp(timestamp)) {
+            return ResponseUtil.error(Error.TIMESTAMP_ILLEGAL);
+        }
+
         Object userInfo = dataRedisCache.get(Constants.USER_NAMESPACE + authorization);
 
         String encrySignature = validate(joinPoint, "secret");
         log.info("signautre: {}, encrySignature: {}", signature, encrySignature);
 
         // 校验签名合法性
-        if (signature == null || signature.equals("") || !encrySignature.equals(signature)) {
+        if (StringUtils.isEmpty(signature) || !encrySignature.equals(signature)) {
             return ResponseUtil.error(Error.SIGNATURE_ILLEGAL);
         }
 
