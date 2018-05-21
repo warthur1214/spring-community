@@ -14,7 +14,47 @@
 	POST 用于添加新记录；
 	PUT 用户修改记录；
 	DELETE 用于删除记录
-一. Authorization的生成与刷新：
+三. 响应体：
+	
+	1. 请求格式：
+		status: 状态码；
+		message: 请求或操作信息的结果；
+		desc： 用于请求参数的错误信息描述；
+		data：获取的数据对象(array、object)
+	2. status状态码规范：
+		a. 200-500错误码取标准http状态码
+		b. 系统自定义错误码取<=-1000的整数值
+		c. 系统自定义成功码取>=1000的整数值
+		d. 每个接口新增的错误码见api接口excel表返回值部分，如非
+			必要不在以下状态码表中一一列出
+	3. 状态码表：
+		status      message
+		200         请求成功
+		201         创建或修改成功
+		204         删除成功
+		400         参数错误
+		401         Authorization验证失败
+		403         禁止访问，Authorization异常
+		404         未找到
+		500         系统错误
+		
+		-1000       处理失败
+		-1001       请求Version非法
+		-1002       请求signature非法
+		-1003       请求signature非法
+		1000        发送短信成功
+		1001        用户绑定手机号成功
+	4. 示例：
+		{
+			"status": 400,
+			"message": "请求成功",
+			"desc": [
+				"短信验证码不能为null或空串",
+				"手机号格式非法"
+			],
+			"data": null
+		}
+四. Authorization的生成与刷新：
 
 	1. 生成通过 登录或注册 接口得到，并获得签名（signature）的生成密钥（secret）和
 		刷新Authorization的refreshToken；
@@ -22,7 +62,7 @@
 	3. 如果Authorization过期或失效，须拿老Authorization和refreshToken请求刷新
 		接口，获取新的Authorization；
 	4. 过期时间是2小时（7200s）；
-二. signature的生成：
+五. signature的生成：
 
 	1. 获取请求的query string和request body（jsonObject）；
 	2. 把query string 按&分割成数组requestList；
@@ -31,7 +71,7 @@
 	5. 对requestlist数组按值做正序排列，并按&拼接成string生成明文校验体；
 	6. 对明文校验体做base64加密，生成密文校验体；
 	6. 对 “密钥（secret）+ : + 密文校验体” 做sha1加密生成signature；
-三. 签名过程示例：
+六. 签名过程示例：
 
 	密钥：123456
 	1. query string: timestamp=1526264228121&pageNum=1&pageSize=10

@@ -5,6 +5,7 @@ package com.warthur.community.common;
  */
 public final class Constants {
 
+	public static final String STRING_INIT = "";
 	public static final String JWT_TOKEN_HEADER = "Authorization";
 	public static final String USER_NAMESPACE = "wechat_authorize_user:";
 
