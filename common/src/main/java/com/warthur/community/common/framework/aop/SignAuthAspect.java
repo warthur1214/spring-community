@@ -2,7 +2,7 @@ package com.warthur.community.common.framework.aop;
 
 import com.warthur.community.common.Constants;
 import com.warthur.community.common.Error;
-import com.warthur.community.common.framework.cache.DataRedisCache;
+import com.warthur.community.common.framework.cache.Cache;
 import com.warthur.community.common.util.ResponseUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -12,6 +12,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +25,8 @@ import javax.servlet.http.HttpServletRequest;
 public class SignAuthAspect extends AbstractAspect {
 
     @Autowired
-    private DataRedisCache dataRedisCache;
+    @Qualifier("dataRedisCache")
+    private Cache<Object> dataRedisCache;
 
     @Pointcut("execution(@(org.springframework.web.bind.annotation.RequestMapping || " +
             "org.springframework.web.bind.annotation.GetMapping || " +
