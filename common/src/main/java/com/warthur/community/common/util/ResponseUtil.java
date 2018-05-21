@@ -1,11 +1,11 @@
 package com.warthur.community.common.util;
 
 
+import com.warthur.community.common.BaseDTO;
 import com.warthur.community.common.Error;
 import com.warthur.community.common.Response;
 import org.springframework.validation.BindingResult;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,12 +15,28 @@ import java.util.stream.Collectors;
  */
 public class ResponseUtil {
 
-    public static Response success(Object object) {
-        return new Response<>(Error.REQUEST_SUCCESS, object);
+    public static Response success() {
+        return new Response<>(Error.REQUEST_SUCCESS);
     }
 
-    public static Response success() {
-        return success(new HashMap<>());
+    public static Response success(BaseDTO dto) {
+        return new Response<>(Error.REQUEST_SUCCESS, dto);
+    }
+
+    public static Response success(String message) {
+        return success(message, null);
+    }
+
+    public static Response success(Error res) {
+        return success(res, null);
+    }
+
+    public static Response success(Error res, BaseDTO dto) {
+        return new Response<>(res, dto);
+    }
+
+    public static Response success(String message, BaseDTO dto) {
+        return new Response<>(Error.REQUEST_SUCCESS.getCode(), message, dto);
     }
 
     public static Response error(Integer code, String msg) {

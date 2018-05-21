@@ -4,24 +4,26 @@ import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 
 /**
  * Created by leo on 16/6/6.
  */
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@NoArgsConstructor
 @AllArgsConstructor
-public class Response<T> {
+public class Response<T> implements Serializable {
+
+    private static final long serialVersionUID = 5690428646731343292L;
 
     /**
      * code 0 - 正确； 非0为错误码
      */
-    private int status = 200;
-    private String message = "请求成功";
-    private T data = null;
-    private T desc = null;
+    private Integer status;
+    private String message;
+    private T data;
+    private T desc;
 
     public Response(int code, String message) {
         this.status = code;
@@ -32,6 +34,10 @@ public class Response<T> {
         this.status = status;
         this.message = message;
         this.data = data;
+    }
+
+    public Response(Error res) {
+        this(res, null);
     }
 
     public Response(Error res, T data) {
