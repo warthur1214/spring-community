@@ -59,7 +59,7 @@ public abstract class AbstractRedisCache<T> implements Cache<T> {
     @Override
     public void delete(String... keys) {
         for (String key : keys) {
-            if (exists(key)) {
+            if (key != null && exists(key)) {
                 redisTemplate.delete(key);
             }
         }
@@ -68,12 +68,16 @@ public abstract class AbstractRedisCache<T> implements Cache<T> {
     @Override
     public void deletePattern(String pattern) {
         Set<String> keys = redisTemplate.keys(pattern);
-        if (keys.size() > 0)
+        if (keys.size() > 0) {
             redisTemplate.delete(keys);
+        }
     }
 
     @Override
     public boolean exists(String key) {
+        if (key == null || key.equals("")) {
+            return false;
+        }
         return redisTemplate.hasKey(key);
     }
 

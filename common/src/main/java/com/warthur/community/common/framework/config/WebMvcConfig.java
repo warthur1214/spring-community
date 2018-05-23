@@ -1,7 +1,9 @@
 package com.warthur.community.common.framework.config;
 
+import com.warthur.community.common.framework.cache.StringRedisCache;
 import com.warthur.community.common.framework.interceptor.JwtInterceptor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.context.annotation.Bean;
@@ -9,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -18,6 +21,9 @@ import java.util.List;
 @Configuration
 @Slf4j
 public class WebMvcConfig extends WebMvcConfigurerAdapter implements EmbeddedServletContainerCustomizer {
+
+    @Autowired
+    private StringRedisCache stringRedisCache;
 
     @Bean
     public HttpMessageConverter<String> responseBodyConverter() {
@@ -45,8 +51,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter implements EmbeddedSer
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         log.info("==拦截器注册==");
-        registry.addInterceptor(new JwtInterceptor()).addPathPatterns("/**");//权限验证拦截器
-
+        registry.addInterceptor(new JwtInterceptor(stringRedisCache)).addPathPatterns("/**");//权限验证拦截器
         super.addInterceptors(registry);
     }
 

@@ -24,15 +24,21 @@ public class SwaggerConfig {
 	@Bean
 	public Docket createTestApi() {
 		ParameterBuilder aParameterBuilder = new ParameterBuilder();
-		aParameterBuilder.name("Authorization")
+
+		List<Parameter> aParameters = new ArrayList<>();
+		aParameters.add(aParameterBuilder.name("Authorization")
 				.description("auth header")
 				.modelRef(new ModelRef("string"))
 				.parameterType("header")
 				.required(false)
-				.build();
-
-		List<Parameter> aParameters = new ArrayList<>();
-		aParameters.add(aParameterBuilder.build());
+				.build());
+		aParameters.add(aParameterBuilder.name("Version")
+				.description("version header")
+				.modelRef(new ModelRef("string"))
+				.parameterType("header")
+				.required(true)
+				.build()
+		);
 
 		return new Docket(DocumentationType.SWAGGER_2)
 				.globalOperationParameters(aParameters)

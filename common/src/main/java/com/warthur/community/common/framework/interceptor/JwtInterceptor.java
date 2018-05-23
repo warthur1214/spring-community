@@ -3,6 +3,7 @@ package com.warthur.community.common.framework.interceptor;
 import com.warthur.community.common.Constants;
 import com.warthur.community.common.Error;
 import com.warthur.community.common.framework.annotation.AuthExclude;
+import com.warthur.community.common.framework.cache.Cache;
 import com.warthur.community.common.framework.cache.StringRedisCache;
 import com.warthur.community.common.util.ResponseUtil;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -10,22 +11,34 @@ import io.jsonwebtoken.SignatureException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import org.w3c.dom.stylesheets.LinkStyle;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
+import java.util.List;
 
 @Slf4j
 public class JwtInterceptor implements HandlerInterceptor {
 
-	@Autowired
 	private StringRedisCache stringRedisCache;
+	private List<String> excludeUrl;
+
+	public JwtInterceptor(StringRedisCache stringRedisCache) {
+		this.stringRedisCache = stringRedisCache;
+		excludeUrl = Arrays.asList("/v2/api-docs", "/configuration/ui", "/configuration/security", "/swagger-resources");
+	}
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-		if (!(handler instanceof HandlerMethod)) {
+
+		String url = request.getRequestURI();
+		if (!(handler instanceof HandlerMethod) || excludeUrl.contains(url)) {
 			return true;
 		}
 		HandlerMethod handlerMethod = (HandlerMethod) handler;
