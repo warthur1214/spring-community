@@ -118,9 +118,9 @@
           "userInfo=2"
         ]
     3. 生成的明文校验体为：
-    code=033PiWQz1GY7Ae0HIAOz1WsYQz1PiWQd&orderList=3&pageNum=1&pageSize=10&smsCode=1267&tel=18516599223&timestamp=1526264228121&userInfo=2
+        code=033PiWQz1GY7Ae0HIAOz1WsYQz1PiWQd&orderList=3&pageNum=1&pageSize=10&smsCode=1267&tel=18516599223&timestamp=1526264228121&userInfo=2
     4. 拼接密钥：
-    123456:Y29kZT0wMzNQaVdRejFHWTdBZTBISUFPejFXc1lRejFQaVdRZCZvcmRlckxpc3Q9MyZwYWdlTnVtPTEmcGFnZVNpemU9MTAmc21zQ29kZT0xMjY3JnRlbD0xODUxNjU5OTIyMyZ1c2VySW5mbz0y
+        123456:Y29kZT0wMzNQaVdRejFHWTdBZTBISUFPejFXc1lRejFQaVdRZCZvcmRlckxpc3Q9MyZwYWdlTnVtPTEmcGFnZVNpemU9MTAmc21zQ29kZT0xMjY3JnRlbD0xODUxNjU5OTIyMyZ1c2VySW5mbz0y
     5 sha1加密后生成signature：
-    887953ccf5a4244dd38934a2920762da699b02e11faa18eb0aeabf58aaebeea2
+        887953ccf5a4244dd38934a2920762da699b02e11faa18eb0aeabf58aaebeea2
         

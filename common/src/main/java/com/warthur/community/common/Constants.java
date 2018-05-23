@@ -10,4 +10,5 @@ public final class Constants {
 	public static final String USER_NAMESPACE = "wechat_authorize_user:";
 
 	public static final long TIMESTAMP_DEVIATION = 3000;
+	public static final long AUTH_TOKEN_EXPIRE = 7230L;
 }

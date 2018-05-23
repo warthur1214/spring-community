@@ -1,5 +1,5 @@
 
-package com.warthur.community.common.framework.swagger;
+package com.warthur.community.common.framework.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

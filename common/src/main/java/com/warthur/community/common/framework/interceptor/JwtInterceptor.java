@@ -3,11 +3,13 @@ package com.warthur.community.common.framework.interceptor;
 import com.warthur.community.common.Constants;
 import com.warthur.community.common.Error;
 import com.warthur.community.common.framework.annotation.AuthExclude;
+import com.warthur.community.common.framework.cache.StringRedisCache;
 import com.warthur.community.common.util.ResponseUtil;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.SignatureException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,6 +19,10 @@ import javax.servlet.http.HttpServletResponse;
 
 @Slf4j
 public class JwtInterceptor implements HandlerInterceptor {
+
+	@Autowired
+	private StringRedisCache stringRedisCache;
+
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		if (!(handler instanceof HandlerMethod)) {
@@ -42,9 +48,15 @@ public class JwtInterceptor implements HandlerInterceptor {
 			return true;
 		} catch (SignatureException e) {
 			log.error("授权token异常：" + e.getMessage());
+
+			stringRedisCache.delete(authorizationToken);
+
 			response.getWriter().print(ResponseUtil.error(Error.UNAUTHORIZED_ERROR).toString());
 		} catch (ExpiredJwtException e) {
 			log.error("授权检查过期：" + e.getMessage());
+
+			stringRedisCache.delete(authorizationToken);
+
 			response.getWriter().print(ResponseUtil.error(Error.FORBIDDEN_ERROR).toString());
 		}
 		response.setHeader("Content-Type", "application/json;charset=UTF-8");
