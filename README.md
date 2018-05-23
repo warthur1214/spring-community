@@ -20,8 +20,8 @@
     1. 返回数据格式：
         status: 状态码；
         message: 请求或操作信息的结果；
-        desc： 用于请求参数的错误信息描述；
-        data：获取的数据对象(array、object)
+        desc： 用于请求参数的错误信息描述(null/string)；
+        data：获取的数据对象(null/array/object)
     2. status状态码规范：
         a. 200-500错误码取标准http状态码
         b. 系统自定义错误码取<=-1000的整数值
