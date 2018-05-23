@@ -2,8 +2,8 @@
 
 一. 请求的前提：
 
-    1. 除验证用户信息的接口，所有必须携带signature接口；
-    2. 除验证用户信息的接口, 所有必须携带Authorization请求头；
+    1. 除验证用户信息的接口，所有对后端接口的请求必须携带signature接口；
+    2. 除验证用户信息的接口, 所有对后端接口的请求必须携带Authorization请求头；
     3. 所有请求必须携带请求头Version=v1/v2...,保证api的版本控制；
     4. 需要携带signature的api，需要添加timestamp参数，格式为毫秒级时间戳；
     5. timestamp参数与服务器时间戳误差超过3000（数值待定），则判断timestamp非法；
