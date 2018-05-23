@@ -18,16 +18,16 @@
 三. 响应体：
     
     1. 返回数据格式：
-        status: 状态码；
-        message: 请求或操作信息的结果；
-        desc： 用于请求参数的错误信息描述(null/string)；
-        data：获取的数据对象(null/array/object)
+        status:     状态码；
+        message:    请求或操作信息的结果；
+        desc:       用于请求参数的错误信息描述(null/string)；
+        data:       获取的数据对象(null/array/object)
     2. status状态码规范：
         a. 200-500错误码取标准http状态码
         b. 系统自定义错误码取<=-1000的整数值
         c. 系统自定义成功码取>=1000的整数值
         d. 每个接口新增的错误码见api接口excel表返回值部分，如非
-            必要不在以下状态码表中一一列出
+           必要不在以下状态码表中一一列出
     3. 状态码表：
         status      message
         200         请求成功
@@ -49,12 +49,12 @@
         a. 错误信息：
           {
             "status": 400,
-	        "message": "参数错误",
-	        "desc": [
-	           "短信验证码不能为null或空串",
-	           "手机号格式非法"
-	        ],
-	        "data": null
+            "message": "参数错误",
+            "desc": [
+               "短信验证码不能为null或空串",
+               "手机号格式非法"
+            ],
+            "data": null
           }
         b. 成功信息：
           {
@@ -74,10 +74,10 @@
 四. Authorization的生成与刷新：
 
     1. 生成通过 登录或注册 接口得到，并获得签名（signature）的生成密钥（secret）和
-        刷新Authorization的refreshToken；
+       刷新Authorization的refreshToken；
     2. 重复请求 登录或注册 接口，会得到第一次请求的接口数据，数据缓存在redis里；
     3. 如果Authorization过期或失效，须拿老Authorization和refreshToken请求刷新
-        接口，获取新的Authorization；
+       接口，获取新的Authorization；
     4. 过期时间是2小时（7200s）；
 五. signature的生成：
 
@@ -119,9 +119,9 @@
           "userInfo=2"
         ]
     3. 生成的明文校验体为：
-        code=033PiWQz1GY7Ae0HIAOz1WsYQz1PiWQd&orderList=3&pageNum=1&pageSize=10&smsCode=1267&tel=18516599223&timestamp=1526264228121&userInfo=2
+       code=033PiWQz1GY7Ae0HIAOz1WsYQz1PiWQd&orderList=3&pageNum=1&pageSize=10&smsCode=1267&tel=18516599223&timestamp=1526264228121&userInfo=2
     4. 拼接密钥：
-        123456:Y29kZT0wMzNQaVdRejFHWTdBZTBISUFPejFXc1lRejFQaVdRZCZvcmRlckxpc3Q9MyZwYWdlTnVtPTEmcGFnZVNpemU9MTAmc21zQ29kZT0xMjY3JnRlbD0xODUxNjU5OTIyMyZ1c2VySW5mbz0y
+       123456:Y29kZT0wMzNQaVdRejFHWTdBZTBISUFPejFXc1lRejFQaVdRZCZvcmRlckxpc3Q9MyZwYWdlTnVtPTEmcGFnZVNpemU9MTAmc21zQ29kZT0xMjY3JnRlbD0xODUxNjU5OTIyMyZ1c2VySW5mbz0y
     5 sha1加密后生成signature：
-        887953ccf5a4244dd38934a2920762da699b02e11faa18eb0aeabf58aaebeea2
+       887953ccf5a4244dd38934a2920762da699b02e11faa18eb0aeabf58aaebeea2
         
