@@ -2,9 +2,10 @@ package com.warthur.community.common.framework.handler;
 
 import com.warthur.community.common.Response;
 import com.warthur.community.common.framework.exception.ServerException;
-import com.warthur.community.common.framework.exception.WechatException;
+import com.warthur.community.common.framework.exception.CommunityException;
 import com.warthur.community.common.util.ResponseUtil;
 import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -19,18 +20,19 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  */
 
 @ControllerAdvice
-@Log4j
+@Slf4j
 public class WebExceptionHandler {
 
-    @ExceptionHandler(value = WechatException.class)
+    @ExceptionHandler(value = CommunityException.class)
     @ResponseBody
-    public Response exceptionGet(WechatException e) {
+    public Response exceptionGet(CommunityException e) {
+        log.info("community exception: status: {}, message: {}", e.getCode(), e.getMessage());
         return ResponseUtil.error(e.getCode(), e.getMessage());
     }
 
     @ExceptionHandler(value = {ServerException.class})
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public void serverExcptionGet(ServerException e) {
-        log.error(e);
+        log.error("系统异常：{}", e);
     }
 }

@@ -44,7 +44,7 @@ public class WebLogAspect extends AbstractAspect {
 		HttpServletRequest request = getRequest(joinPoint);
 
 		// 记录下请求内容
-		log.info("REQEUEST: {} -> {}", request.getMethod(), request.getRequestURL());
+		log.info("REQUEST: {} -> {}", request.getMethod(), request.getRequestURL());
 		log.info("请求控制器方法: {}.{}", joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());
 		log.info("请求参数: {}", Arrays.toString(joinPoint.getArgs()));
 	}

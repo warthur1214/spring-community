@@ -20,6 +20,8 @@ public interface Cache<T> {
 
     T getSet(final String key, T value);
 
+    void expire(final String key, long seconds);
+
     long getExpire(final String key);
 
     void set(final String key, T value);
@@ -29,6 +31,8 @@ public interface Cache<T> {
     void deletePattern(final String pattern);
 
     boolean exists(final String key);
+
+    long incr(final String key);
 
     T get(final String key);
 

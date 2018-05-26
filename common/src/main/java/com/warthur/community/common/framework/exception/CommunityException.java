@@ -1,26 +1,26 @@
 package com.warthur.community.common.framework.exception;
 
-import com.warthur.community.common.Error;
+import com.warthur.community.common.ErrorCode;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class WechatException extends RuntimeException {
+public class CommunityException extends RuntimeException {
 
 	private static final long serialVersionUID = -1535065562881117634L;
 	private Integer code;
 
-	public WechatException(Error exceptionEnum) {
+	public CommunityException(ErrorCode exceptionEnum) {
 		super(exceptionEnum.getMsg());
 		this.code = exceptionEnum.getCode();
 	}
 
-	public WechatException(String msg) {
-		this(msg, 3);
+	public CommunityException(String message) {
+		this(ErrorCode.INTERNAL_ERROR.getCode(), message);
 	}
 
-	public WechatException(String message, Integer code) {
+	public CommunityException(Integer code, String message) {
 		super(message);
 		this.code = code;
 	}

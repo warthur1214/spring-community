@@ -36,11 +36,11 @@ public class Response<T> implements Serializable {
         this.data = data;
     }
 
-    public Response(Error res) {
+    public Response(ErrorCode res) {
         this(res, null);
     }
 
-    public Response(Error res, T data) {
+    public Response(ErrorCode res, T data) {
         this(res.getCode(), res.getMsg(), data);
     }
 

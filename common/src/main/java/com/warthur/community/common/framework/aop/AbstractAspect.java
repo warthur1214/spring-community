@@ -2,14 +2,20 @@ package com.warthur.community.common.framework.aop;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.warthur.community.common.Constants;
+import com.warthur.community.common.framework.exception.CommunityException;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.Signature;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
 import java.util.*;
 
+@SuppressWarnings("unchecked")
 abstract class AbstractAspect implements CommunityAspect {
 
     HttpServletRequest getRequest(JoinPoint joinPoint) {

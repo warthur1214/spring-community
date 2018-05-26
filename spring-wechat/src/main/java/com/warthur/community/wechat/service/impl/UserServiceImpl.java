@@ -1,6 +1,6 @@
 package com.warthur.community.wechat.service.impl;
 
-import com.warthur.community.common.Response;
+import com.warthur.community.common.bean.UserInfo;
 import com.warthur.community.common.util.ResponseUtil;
 import com.warthur.community.wechat.pojo.param.UserParam;
 import com.warthur.community.wechat.service.UserService;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
 	@Override
-	public Response login(String code) {
+	public void login(String code) {
 
 		// 根据code获取openid
 
@@ -26,11 +26,10 @@ public class UserServiceImpl implements UserService {
 		// 生成签名密钥，token，refreshToken并存储到redis
 
 		// 返回userInfo + jwtToken
-		return ResponseUtil.success();
 	}
 
 	@Override
-	public Response addUserByOpenId(UserParam reqParam) {
+	public UserInfo addUserByOpenId(UserParam reqParam) {
 		// 校验短信验证码
 
 		// 根据code获取openId
@@ -40,6 +39,6 @@ public class UserServiceImpl implements UserService {
 		// 生成签名密钥，token，refreshToken并存储到redis
 
 		// 返回userInfo + jwtToken
-		return ResponseUtil.success();
+		return null;
 	}
 }

@@ -1,7 +1,5 @@
 package com.warthur.community.wechat.service.impl;
 
-import com.warthur.community.common.Response;
-import com.warthur.community.common.util.ResponseUtil;
 import com.warthur.community.wechat.pojo.param.Message;
 import com.warthur.community.wechat.service.MessageService;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class MessageServiceImpl implements MessageService {
 
 	@Override
-	public Response sendSmsMessage(Message message) {
+	public void sendSmsMessage(Message message) {
 
 		// 根据code查询openId
 
@@ -25,6 +23,5 @@ public class MessageServiceImpl implements MessageService {
 
 		// 发送短信
 
-		return ResponseUtil.success();
 	}
 }

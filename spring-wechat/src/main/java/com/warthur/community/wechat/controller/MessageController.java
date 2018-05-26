@@ -1,8 +1,9 @@
 package com.warthur.community.wechat.controller;
 
 import com.warthur.community.common.Response;
+import com.warthur.community.common.framework.annotation.ApiLimit;
 import com.warthur.community.common.framework.annotation.AuthExclude;
-import com.warthur.community.common.framework.exception.WechatException;
+import com.warthur.community.common.framework.exception.CommunityException;
 import com.warthur.community.common.util.ResponseUtil;
 import com.warthur.community.wechat.pojo.param.Message;
 import com.warthur.community.wechat.service.MessageService;
@@ -30,20 +31,16 @@ public class MessageController {
 	@PostMapping(value = "/messages")
 	@ApiOperation("发送短信验证码接口")
 	@AuthExclude
-	public Response sendSmsMessage(@Validated(Message.MsgSend.class) @RequestBody Message message, BindingResult result) {
-		Response response;
+	@ApiLimit(counts = 1)
+	public Response sendSmsMessage(@Validated(Message.MsgSend.class) @RequestBody Message message,
+								   BindingResult result) {
 
-		try {
-			if (result.hasErrors()) {
-				return ResponseUtil.error(result);
-			}
-			response = messageService.sendSmsMessage(message);
-		} catch (WechatException e) {
-			log.error("发送短信失败：{}", e.getMessage());
-			return ResponseUtil.error("发送短信失败: " + e.getMessage());
-		}
+		if (result.hasErrors()) {
+            return ResponseUtil.error(result);
+        }
+		messageService.sendSmsMessage(message);
 
-		return response;
+		return ResponseUtil.success();
 	}
 
 }

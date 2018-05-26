@@ -1,7 +1,8 @@
 package com.warthur.community.common.framework.aop;
 
 import com.warthur.community.common.Constants;
-import com.warthur.community.common.Error;
+import com.warthur.community.common.ErrorCode;
+import com.warthur.community.common.bean.UserInfo;
 import com.warthur.community.common.framework.cache.Cache;
 import com.warthur.community.common.util.ResponseUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -33,11 +34,10 @@ public class SignAuthAspect extends AbstractAspect {
             "org.springframework.web.bind.annotation.PostMapping || " +
             "org.springframework.web.bind.annotation.PutMapping || " +
             "org.springframework.web.bind.annotation.DeleteMapping)" +
-            "public * com.warthur.community..*.controller..*(..)) " +
-            "!execution(public * com.warthur.community..*.controller..login(..))) &&" +
-            "!execution(public * com.warthur.community..*.controller..addUser(..)))")
+            "public * com.warthur.community..*.controller..*(..)) ")
     public void signAuth() {}
 
+    // 排除被@AuthExclude标记过的方法
     @Pointcut("!execution(@com.warthur.community.common.framework.annotation.AuthExclude " +
             "public * com.warthur.community..*.controller..*(..)))")
     public void excludeMethod() {}
@@ -50,7 +50,6 @@ public class SignAuthAspect extends AbstractAspect {
     @Override
     @Around("signAuth() && excludeMethod()")
     public Object doAround(ProceedingJoinPoint joinPoint) {
-        // 过滤不需要校验的api
 
         // 接收到请求，记录请求内容
         HttpServletRequest request = getRequest(joinPoint);
@@ -58,19 +57,22 @@ public class SignAuthAspect extends AbstractAspect {
         String signature = request.getParameter("signature");
         String timestamp = request.getParameter("timestamp");
 
-        // timestamp合法性校验 误差3s
+        // timestamp合法性校验 误差10s
         if (StringUtils.isEmpty(timestamp) || !validTimestamp(timestamp)) {
-            return ResponseUtil.error(Error.TIMESTAMP_ILLEGAL);
+            return ResponseUtil.error(ErrorCode.TIMESTAMP_ILLEGAL);
         }
 
-        Object userInfo = dataRedisCache.get(Constants.USER_NAMESPACE + authorization);
+        UserInfo userInfo = (UserInfo) dataRedisCache.get(Constants.USER_NAMESPACE + authorization);
+        if (userInfo == null) {
+            return ResponseUtil.error(ErrorCode.UNAUTHORIZED_ERROR);
+        }
 
-        String encrySignature = validate(joinPoint, "secret");
+        String encrySignature = validate(joinPoint, userInfo.getSecret());
         log.info("signautre: {}, encrySignature: {}", signature, encrySignature);
 
         // 校验签名合法性
         if (StringUtils.isEmpty(signature) || !encrySignature.equals(signature)) {
-            return ResponseUtil.error(Error.SIGNATURE_ILLEGAL);
+            return ResponseUtil.error(ErrorCode.SIGNATURE_ILLEGAL);
         }
 
         try {

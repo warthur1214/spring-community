@@ -1,6 +1,6 @@
 package com.warthur.community.wechat.service;
 
-import com.warthur.community.common.Response;
+import com.warthur.community.common.bean.UserInfo;
 import com.warthur.community.wechat.pojo.param.UserParam;
 
 /**
@@ -8,7 +8,7 @@ import com.warthur.community.wechat.pojo.param.UserParam;
  */
 public interface UserService {
 
-	Response login(String code);
+	void login(String code);
 
-	Response addUserByOpenId(UserParam reqParam);
+	UserInfo addUserByOpenId(UserParam reqParam);
 }

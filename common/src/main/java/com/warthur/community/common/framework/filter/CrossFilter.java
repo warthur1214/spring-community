@@ -117,7 +117,7 @@ public class CrossFilter implements Filter {
                 response.setContentType("text/html");
                 PrintStream ps = new PrintStream(response.getOutputStream());
                 PrintWriter pw = new PrintWriter(ps);
-                pw.print("<html>\n<head>\n<title>Error</title>\n</head>\n<body>\n"); //NOI18N
+                pw.print("<html>\n<head>\n<title>ErrorCode</title>\n</head>\n<body>\n"); //NOI18N
 
                 // PENDING! Localize this for next official release
                 pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");

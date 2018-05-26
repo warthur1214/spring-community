@@ -1,6 +1,6 @@
 package com.warthur.community.common.framework.exception;
 
-import com.warthur.community.common.Error;
+import com.warthur.community.common.ErrorCode;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -14,7 +14,7 @@ public class ServerException extends RuntimeException {
 	private static final long serialVersionUID = -1535065562881117634L;
 	private Integer code;
 
-	public ServerException(Error exceptionEnum) {
+	public ServerException(ErrorCode exceptionEnum) {
 		super(exceptionEnum.getMsg());
 		this.code = exceptionEnum.getCode();
 	}

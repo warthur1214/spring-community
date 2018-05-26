@@ -2,7 +2,7 @@ package com.warthur.zuul.filter;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
-import com.warthur.community.common.Error;
+import com.warthur.community.common.ErrorCode;
 import com.warthur.community.common.util.ResponseUtil;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -63,7 +63,7 @@ public class AuthZuulFilter extends ZuulFilter {
 
             ctx.setSendZuulResponse(false); //不进行路由
             try {
-                response.getWriter().write(ResponseUtil.error(Error.VERSION_ILLEGAL).toString()); //响应体
+                response.getWriter().write(ResponseUtil.error(ErrorCode.VERSION_ILLEGAL).toString()); //响应体
             } catch (IOException e) {
                 log.error("response io异常", e);
             }

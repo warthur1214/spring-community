@@ -1,9 +1,10 @@
 package com.warthur.community.wechat.controller;
 
-import com.warthur.community.common.Error;
+import com.warthur.community.common.ErrorCode;
 import com.warthur.community.common.Response;
+import com.warthur.community.common.bean.UserInfo;
 import com.warthur.community.common.framework.annotation.AuthExclude;
-import com.warthur.community.common.framework.exception.WechatException;
+import com.warthur.community.common.framework.exception.CommunityException;
 import com.warthur.community.common.util.ResponseUtil;
 import com.warthur.community.wechat.pojo.param.UserParam;
 import com.warthur.community.wechat.service.UserService;
@@ -31,38 +32,26 @@ public class UserController extends BaseController {
 	@ApiOperation("登录接口")
 	@AuthExclude
 	public Response login(@PathVariable String code) {
-		Response response;
 
-		try {
-			if (StringUtils.isEmpty(code)) {
-				return ResponseUtil.error(Error.PARAMS_ERROR);
-			}
-			response = userService.login(code);
-		} catch (WechatException e) {
-			log.error("登录失败：{}", e.getMessage());
-			return ResponseUtil.error("登录失败: " + e.getMessage());
-		}
+		if (StringUtils.isEmpty(code)) {
+            return ResponseUtil.error(ErrorCode.PARAMS_ERROR);
+        }
 
-		return response;
+		userService.login(code);
+		return ResponseUtil.success();
 	}
 
 	@PostMapping("/users")
 	@ApiOperation("注册绑定用户手机号")
 	@AuthExclude
 	public Response addUser(@Validated @RequestBody UserParam reqParam, BindingResult result) {
-		Response response;
 
-		try {
-			if (result.hasErrors()) {
-				return ResponseUtil.error(result);
-			}
-			response = userService.addUserByOpenId(reqParam);
-		} catch (WechatException e) {
-			log.error("注册失败：{}", e.getMessage());
-			return ResponseUtil.error("注册失败: " + e.getMessage());
-		}
+		if (result.hasErrors()) {
+            return ResponseUtil.error(result);
+        }
+		UserInfo userInfo = userService.addUserByOpenId(reqParam);
 
-		return response;
+		return ResponseUtil.success(userInfo);
 	}
 
 }

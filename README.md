@@ -34,15 +34,15 @@
         201         创建或修改成功
         204         删除成功
         400         参数错误
-        401         Authorization验证失败
+        401         Authorization未认证
         403         禁止访问，Authorization异常
         404         未找到
         500         系统错误
         
         -1000       处理失败
-        -1001       请求Version非法
-        -1002       请求signature非法
-        -1003       请求signature非法
+        -1001       请求头Version非法
+        -1002       请求参数signature非法
+        -1003       请求参数timstamp非法
         1000        发送短信成功
         1001        用户绑定手机号成功
     4. 示例：

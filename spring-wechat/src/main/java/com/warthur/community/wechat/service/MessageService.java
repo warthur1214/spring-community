@@ -1,6 +1,5 @@
 package com.warthur.community.wechat.service;
 
-import com.warthur.community.common.Response;
 import com.warthur.community.wechat.pojo.param.Message;
 
 /**
@@ -8,5 +7,5 @@ import com.warthur.community.wechat.pojo.param.Message;
  */
 public interface MessageService {
 
-	Response sendSmsMessage(Message message);
+	void sendSmsMessage(Message message);
 }

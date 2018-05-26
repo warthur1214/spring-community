@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.*;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 public abstract class AbstractRedisCache<T> implements Cache<T> {
@@ -52,6 +52,11 @@ public abstract class AbstractRedisCache<T> implements Cache<T> {
     }
 
     @Override
+    public void expire(String key, long seconds) {
+        redisTemplate.expire(key, seconds, TimeUnit.SECONDS);
+    }
+
+    @Override
     public long getExpire(String key) {
         return redisTemplate.getExpire(key);
     }
@@ -79,6 +84,12 @@ public abstract class AbstractRedisCache<T> implements Cache<T> {
             return false;
         }
         return redisTemplate.hasKey(key);
+    }
+
+    @Override
+    public long incr(String key) {
+        ValueOperations<String, T> values = redisTemplate.opsForValue();
+        return values.increment(key, 1);
     }
 
     public Long hIncr(String key, String field) {
