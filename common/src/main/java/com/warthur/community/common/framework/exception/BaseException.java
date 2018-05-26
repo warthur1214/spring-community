@@ -1,38 +1,29 @@
 package com.warthur.community.common.framework.exception;
 
+import com.warthur.community.common.ErrorCode;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 /**
  * @Description: 异常基类
  */
+@EqualsAndHashCode(callSuper = true)
+@Data
 public abstract class BaseException extends RuntimeException {
     private static final long serialVersionUID = 5692243177785821696L;
 
-    private ErrorCode error;
-    private Object data = "";
+    private Integer code;
 
-    public BaseException() {
+    public BaseException(Integer code, String message) {
+        super(message);
+        this.code = code;
+    }
+
+    public BaseException(String message) {
+        this(ErrorCode.INTERNAL_ERROR.getCode(), message);
     }
 
     public BaseException(ErrorCode error) {
-        this.error = error;
+        this(error.getCode(), error.getMsg());
     }
-
-    public BaseException(ErrorCode error, Object data) {
-        this.error = error;
-        this.data = data;
-    }
-    
-    public BaseException(ErrorCode error, String msg, Object data) {
-    	this.error = error;
-    	this.error.setMessage(msg);
-    	this.data = data;
-    }
-
-    public ErrorCode getError() {
-        return error;
-    }
-
-	public Object getData() {
-		return data;
-	}
-
 }

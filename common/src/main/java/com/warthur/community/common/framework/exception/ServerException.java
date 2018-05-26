@@ -9,22 +9,15 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class ServerException extends RuntimeException {
+public class ServerException extends BaseException {
 
 	private static final long serialVersionUID = -1535065562881117634L;
-	private Integer code;
 
 	public ServerException(ErrorCode exceptionEnum) {
 		super(exceptionEnum.getMsg());
-		this.code = exceptionEnum.getCode();
 	}
 
-	public ServerException(String msg) {
-		this(msg, 500);
-	}
-
-	public ServerException(String message, Integer code) {
+	private ServerException(Integer code, String message) {
 		super(message);
-		this.code = code;
 	}
 }
