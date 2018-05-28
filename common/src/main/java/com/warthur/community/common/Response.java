@@ -1,7 +1,6 @@
 package com.warthur.community.common;
 
 import com.alibaba.fastjson.JSON;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -11,7 +10,6 @@ import java.io.Serializable;
  * Created by leo on 16/6/6.
  */
 @Data
-@JsonInclude(JsonInclude.Include.NON_NULL)
 @AllArgsConstructor
 public class Response<T> implements Serializable {
 
