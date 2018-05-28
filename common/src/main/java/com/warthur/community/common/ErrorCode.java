@@ -11,8 +11,6 @@ import lombok.Getter;
 public enum ErrorCode {
 
 	REQUEST_SUCCESS(200, "请求成功"),
-	HANDLE_SUCCESS(201, "创建或修改成功"),
-	DELETE_SUCCESS(204, "删除成功"),
 	PARAMS_ERROR(400, "参数错误"),
 	UNAUTHORIZED_ERROR(401, "Authorization未认证"),
 	FORBIDDEN_ERROR(403, "禁止访问，Authorization异常"),

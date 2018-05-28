@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class ResponseUtil {
 
     public static Response success() {
-        return new Response<>(ErrorCode.REQUEST_SUCCESS);
+        return new Response(ErrorCode.REQUEST_SUCCESS);
     }
 
     public static Response success(BaseDTO dto) {
@@ -46,7 +46,7 @@ public class ResponseUtil {
     }
 
     public static Response error(ErrorCode exceptionEnum) {
-        return new Response<>(exceptionEnum);
+        return new Response(exceptionEnum);
     }
 
     public static Response error(String message) {
