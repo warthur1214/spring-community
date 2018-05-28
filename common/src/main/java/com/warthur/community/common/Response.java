@@ -22,26 +22,9 @@ public class Response<T> implements Serializable {
      */
     private Integer status;
     private String message;
-    private T data;
-    private T desc;
-
-    public Response(int code, String message) {
-        this.status = code;
-        this.message = message;
-    }
-
-    public Response(int status, String message, T data) {
-        this.status = status;
-        this.message = message;
-        this.data = data;
-    }
 
     public Response(ErrorCode res) {
-        this(res, null);
-    }
-
-    public Response(ErrorCode res, T data) {
-        this(res.getCode(), res.getMsg(), data);
+        this(res.getCode(), res.getMsg());
     }
 
     public String toString() {
