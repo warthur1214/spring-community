@@ -1,9 +1,7 @@
 package com.warthur.community.common.util;
 
 
-import com.warthur.community.common.BaseDTO;
-import com.warthur.community.common.ErrorCode;
-import com.warthur.community.common.Response;
+import com.warthur.community.common.*;
 import org.springframework.validation.BindingResult;
 
 import java.util.List;
@@ -16,11 +14,11 @@ import java.util.stream.Collectors;
 public class ResponseUtil {
 
     public static Response success() {
-        return new Response<>(ErrorCode.REQUEST_SUCCESS);
+        return new Response(ErrorCode.REQUEST_SUCCESS);
     }
 
     public static Response success(BaseDTO dto) {
-        return new Response<>(ErrorCode.REQUEST_SUCCESS, dto);
+        return new DataResponse<>(ErrorCode.REQUEST_SUCCESS, dto);
     }
 
     public static Response success(String message) {
@@ -32,11 +30,11 @@ public class ResponseUtil {
     }
 
     public static Response success(ErrorCode res, BaseDTO dto) {
-        return new Response<>(res, dto);
+        return new DataResponse<>(res, dto);
     }
 
     public static Response success(String message, BaseDTO dto) {
-        return new Response<>(ErrorCode.REQUEST_SUCCESS.getCode(), message, dto);
+        return new DataResponse<>(ErrorCode.REQUEST_SUCCESS.getCode(), message, dto);
     }
 
     public static Response error(Integer code, String msg) {
@@ -44,11 +42,11 @@ public class ResponseUtil {
     }
 
     public static Response error(Integer code, String msg, Object data) {
-        return new Response<>(code, msg, data);
+        return new DataResponse<>(code, msg, data);
     }
 
     public static Response error(ErrorCode exceptionEnum) {
-        return new Response<>(exceptionEnum, null);
+        return new Response(exceptionEnum);
     }
 
     public static Response error(String message) {
@@ -60,7 +58,7 @@ public class ResponseUtil {
                 .map(fieldError -> fieldError.getField() + fieldError.getDefaultMessage())
                 .sorted()
                 .collect(Collectors.toList());
-        return new Response<>(ErrorCode.PARAMS_ERROR.getCode(), ErrorCode.PARAMS_ERROR.getMsg(), null, errors);
+        return new ErrorResponse<>(ErrorCode.PARAMS_ERROR, errors);
     }
 
 }
