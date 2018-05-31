@@ -1,5 +1,7 @@
 package com.warthur.community.common.framework.cache;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.*;
 import org.springframework.stereotype.Component;
 
