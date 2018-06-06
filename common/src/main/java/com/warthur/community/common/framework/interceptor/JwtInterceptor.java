@@ -30,7 +30,7 @@ public class JwtInterceptor implements HandlerInterceptor {
 
 	public JwtInterceptor(StringRedisCache stringRedisCache) {
 		this.stringRedisCache = stringRedisCache;
-		excludeUrl = Arrays.asList("/v2/api-docs", "/configuration/ui", "/configuration/security", "/swagger-resources");
+		excludeUrl = Arrays.asList("/v2/api-docs", "/configuration/ui", "/configuration/security", "/swagger-resources", "/error");
 	}
 
 	@Override

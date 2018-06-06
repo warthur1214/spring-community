@@ -20,6 +20,7 @@
     1. 返回数据格式：
         status:     状态码；
         message:    请求或操作信息的结果；
+        success:    布尔类型（true/false）
         desc:       用于请求参数的错误信息描述(null/string)；
         data:       获取的数据对象(null/array/object)
     2. status状态码规范：
@@ -50,6 +51,7 @@
           {
             "status": 400,
             "message": "参数错误",
+            "success": false,
             "desc": [
                "短信验证码不能为null或空串",
                "手机号格式非法"
@@ -60,6 +62,7 @@
           {
             "status": 200,
             "message": "请求成功",
+            "success": true,
             "data": {
               "userId": "xxxx",
               "userName": "xxxx"
@@ -69,6 +72,7 @@
           {
             "status": 1000,
             "message": "短信发送成功"
+            "success": true,
           }
         
 四. Authorization的生成与刷新：

@@ -16,17 +16,14 @@ public class Response {
     /**
      * code 200 - 正确； 非0为错误码
      */
+    private boolean success;
     private int status;
     private String message;
 
     public Response(int status, String message) {
         this.status = status;
         this.message = message;
-    }
-
-    @JsonIgnore
-    public boolean isSuccess() {
-        return this.status == 200 || this.status >= 1000;
+        this.success = this.status == 200 || this.status >= 1000;
     }
 
     public Response(ErrorCode res) {
