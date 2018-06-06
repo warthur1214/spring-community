@@ -1,8 +1,12 @@
 package com.warthur.community.common;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 /**
  * Created by warth on 2018/4/10.
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Constants {
 
 	public static final String STRING_INIT = "";
