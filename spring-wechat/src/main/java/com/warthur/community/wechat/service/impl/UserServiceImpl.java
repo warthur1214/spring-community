@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 
 		// 根据openid查询userInfo
 
-		// 根据userInfo查询token，有效则返回userInfo+token+freshToken
+		// 根据userInfo查询token，有且校验jwt是否过期，否则返回userInfo+token+freshToken
 
 		// 生成签名密钥，token，refreshToken并存储到redis
 
@@ -33,6 +33,8 @@ public class UserServiceImpl implements UserService {
 		// 校验短信验证码
 
 		// 根据code获取openId
+
+		// 查询数据库是否注册过，有则获取token和userInfo返回
 
 		// 存储用户信息
 

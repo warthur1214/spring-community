@@ -4,8 +4,12 @@ import com.warthur.community.common.Constants;
 import com.warthur.community.common.ErrorCode;
 import com.warthur.community.common.framework.annotation.AuthExclude;
 import com.warthur.community.common.framework.cache.StringRedisCache;
+import com.warthur.community.common.util.DateUtils;
+import com.warthur.community.common.util.JwtUtil;
 import com.warthur.community.common.util.ResponseUtil;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -52,6 +56,10 @@ public class JwtInterceptor implements HandlerInterceptor {
 			if (StringUtils.isEmpty(authorizationToken)) {
 				throw new SignatureException("请求头Authorization缺失！");
 			}
+
+			Claims claims = JwtUtil.decryJwtToken(authorizationToken);
+
+			log.info("subject: {}, expire: {}", claims.getSubject(), DateUtils.format(claims.getExpiration()));
 
 			return true;
 		} catch (SignatureException e) {

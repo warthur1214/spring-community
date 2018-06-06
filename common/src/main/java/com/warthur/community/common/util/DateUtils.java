@@ -19,4 +19,11 @@ public class DateUtils extends DateFormatUtils {
         return format(new Date(), DEFAULT_PATTERN);
     }
 
+    public static String format(Date date) {
+        if (date == null) {
+            return null;
+        }
+        return format(date, DEFAULT_PATTERN);
+    }
+
 }

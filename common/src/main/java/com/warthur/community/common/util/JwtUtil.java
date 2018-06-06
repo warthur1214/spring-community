@@ -13,7 +13,7 @@ public class JwtUtil {
 
 	public static final long EXPIRE_TIME = 2 * 3600 * 1000;
 	public static final String JWT_ID = "JwtId";
-	private static final String SECRET = "43455454gjixiuowrmkhdiuhs#^&(klefk!";
+	private static final String SECRET = "a036692d9cc18ea29d94f634aaaca197";
 
 	public static String createJwtToken(String userInfo) {
 		return Jwts.builder()
@@ -25,11 +25,10 @@ public class JwtUtil {
 				.compact();
 	}
 
-	public static String decryJwtToken(String token) {
-		Claims claims = Jwts.parser()
+	public static Claims decryJwtToken(String token) {
+		return Jwts.parser()
 				.setSigningKey(SECRET)
 				.parseClaimsJws(token)
 				.getBody();
-		return claims.getSubject();
 	}
 }

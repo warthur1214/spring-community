@@ -1,6 +1,7 @@
 package com.warthur.community.common.framework.cache;
 
 import com.warthur.community.common.framework.config.IMRedisPipeline;
+import com.warthur.community.common.util.StringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.connection.RedisConnection;
@@ -80,7 +81,7 @@ public abstract class AbstractRedisCache<T> implements Cache<T> {
 
     @Override
     public boolean exists(String key) {
-        if (key == null || key.equals("")) {
+        if (StringUtils.isEmpty(key)) {
             return false;
         }
         return redisTemplate.hasKey(key);
