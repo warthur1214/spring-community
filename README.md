@@ -84,7 +84,7 @@
     1. 获取请求的query string和request body（jsonObject）；
     2. 把query string 按&分割成数组requestList；
     3. 把jsonObject的对象按key=value的格式放入requestList；
-    4. 若jsonObject里的value是object或array，则value取object或array的lentgh；
+    4. 若jsonObject里的value是object或array，则value取object或array的length；
     5. 对requestlist数组按值做正序排列，并按&拼接成string生成明文校验体；
     6. 对明文校验体做base64加密，生成密文校验体；
     6. 对 “密钥（secret）+ : + 密文校验体” 做sha1加密生成signature；
