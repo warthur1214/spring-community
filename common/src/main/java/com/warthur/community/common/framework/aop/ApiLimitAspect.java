@@ -27,7 +27,7 @@ import java.lang.reflect.Method;
  */
 @Component
 @Aspect
-@Order(-510)
+@Order(50)
 @Slf4j
 public class ApiLimitAspect extends AbstractAspect {
 

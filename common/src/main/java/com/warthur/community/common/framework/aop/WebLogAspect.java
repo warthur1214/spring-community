@@ -26,7 +26,7 @@ import java.util.List;
 @Component
 @Aspect
 @Slf4j
-@Order(-500)
+@Order(100)
 public class WebLogAspect extends AbstractAspect {
 
 	@Pointcut("execution(@(org.springframework.web.bind.annotation.RequestMapping || " +

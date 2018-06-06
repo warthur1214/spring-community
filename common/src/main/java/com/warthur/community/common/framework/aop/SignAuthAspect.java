@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 @Aspect
 @Slf4j
-@Order(-490)
+@Order(200)
 public class SignAuthAspect extends AbstractAspect {
 
     @Autowired

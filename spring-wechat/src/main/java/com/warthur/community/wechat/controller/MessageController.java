@@ -31,13 +31,10 @@ public class MessageController {
 	@PostMapping(value = "/messages")
 	@ApiOperation("发送短信验证码接口")
 	@AuthExclude
-	@ApiLimit(counts = 1)
+	// @ApiLimit(counts = 1)
 	public Response sendSmsMessage(@Validated(Message.MsgSend.class) @RequestBody Message message,
 								   BindingResult result) {
 
-		if (result.hasErrors()) {
-            return ResponseUtil.error(result);
-        }
 		messageService.sendSmsMessage(message);
 
 		return ResponseUtil.success();
