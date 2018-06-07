@@ -1,9 +1,7 @@
 package com.warthur.community.wechat.controller;
 
 import com.warthur.community.common.Response;
-import com.warthur.community.common.framework.annotation.ApiLimit;
 import com.warthur.community.common.framework.annotation.AuthExclude;
-import com.warthur.community.common.framework.exception.CommunityException;
 import com.warthur.community.common.util.ResponseUtil;
 import com.warthur.community.wechat.pojo.param.Message;
 import com.warthur.community.wechat.service.MessageService;
