@@ -21,6 +21,7 @@ public interface ErrorEntity {
     Response success(BaseDTO baseDTO);
 
     /**
+     * response success data
      * @return response
      */
     Response success();
