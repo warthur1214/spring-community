@@ -4,6 +4,7 @@ package com.warthur.community.common.util;
 import com.warthur.community.common.*;
 import org.springframework.validation.BindingResult;
 
+import javax.swing.text.html.parser.Entity;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,6 +13,14 @@ import java.util.stream.Collectors;
  * @author warthur
  */
 public class ResponseUtil {
+
+    public static Response success(ErrorEntity entity) {
+        return entity.success();
+    }
+
+    public static Response success(ErrorEntity entity, BaseDTO baseDTO) {
+        return entity.success(baseDTO);
+    }
 
     public static Response success() {
         return new Response(ErrorCode.REQUEST_SUCCESS);

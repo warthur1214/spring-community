@@ -12,4 +12,16 @@ public interface ErrorEntity {
      * @return this
      */
     CommunityException exception();
+
+    /**
+     * response data
+     * @param baseDTO data
+     * @return response
+     */
+    Response success(BaseDTO baseDTO);
+
+    /**
+     * @return response
+     */
+    Response success();
 }

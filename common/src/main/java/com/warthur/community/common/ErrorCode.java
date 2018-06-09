@@ -33,4 +33,16 @@ public enum ErrorCode implements ErrorEntity {
 	public CommunityException exception() {
 		return new CommunityException(this.code, this.msg);
 	}
+
+	@Override
+	public Response success(BaseDTO baseDTO) {
+		return new DataResponse(this.code, this.msg, baseDTO);
+	}
+
+	@Override
+	public Response success() {
+		return new Response(this.code, this.msg);
+	}
+
+
 }

@@ -8,15 +8,15 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * Created by leo on 16/6/6.
+ * response object
+ * @author warthur
+ * @date 16/6/6
  */
 @Data
-public class Response<T> implements Serializable {
+public class Response implements Serializable {
 
     private static final long serialVersionUID = -5107029250213698775L;
-    /**
-     * code 200 - 正确； 非0为错误码
-     */
+
     private boolean success;
     private int status;
     private String message;
