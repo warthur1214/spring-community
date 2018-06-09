@@ -4,22 +4,24 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * Created by warthur on 2018/5/28.
+ * data response
+ * @author warthur
+ * @date 2018/5/28
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class DataResponse<T> extends Response {
+public class DataResponse extends Response {
 	private static final long serialVersionUID = -5063369357722670417L;
 
-	private T data;
+	private BaseDTO data;
 
 
-	public DataResponse(int status, String message, T data) {
+	public DataResponse(int status, String message, BaseDTO data) {
 		super(status, message);
 		this.data = data;
 	}
 
-	public DataResponse(ErrorCode res, T data) {
+	public DataResponse(ErrorCode res, BaseDTO data) {
 		super(res);
 		this.data = data;
 	}

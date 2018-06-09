@@ -1,14 +1,17 @@
 package com.warthur.community.common;
 
+import com.warthur.community.common.framework.exception.CommunityException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * Created by admin on 2017/7/7.
+ * 系统响应状态码
+ * @author admin
+ * @date 2017/7/7
  */
 @Getter
 @AllArgsConstructor
-public enum ErrorCode {
+public enum ErrorCode implements ErrorEntity {
 
 	REQUEST_SUCCESS(200, "请求成功"),
 	PARAMS_ERROR(400, "参数错误"),
@@ -26,4 +29,8 @@ public enum ErrorCode {
 	private Integer code;
 	private String msg;
 
+	@Override
+	public CommunityException exception() {
+		return new CommunityException(this.code, this.msg);
+	}
 }

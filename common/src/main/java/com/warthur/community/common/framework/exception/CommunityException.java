@@ -4,6 +4,9 @@ import com.warthur.community.common.ErrorCode;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+/**
+ * @author warthur
+ */
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class CommunityException extends BaseException {
@@ -14,7 +17,7 @@ public class CommunityException extends BaseException {
 		super(exceptionEnum.getMsg());
 	}
 
-	private CommunityException(Integer code, String message) {
-		super(message);
+	public CommunityException(int code, String message) {
+		super(code, message);
 	}
 }

@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Created by arthur wu
- * on 2017/3/22.
+ * response 工具类
+ * @author warthur
  */
 public class ResponseUtil {
 
@@ -18,39 +18,27 @@ public class ResponseUtil {
     }
 
     public static Response success(BaseDTO dto) {
-        return new DataResponse<>(ErrorCode.REQUEST_SUCCESS, dto);
+        return new DataResponse(ErrorCode.REQUEST_SUCCESS, dto);
     }
 
     public static Response success(String message) {
-        return success(message, null);
-    }
-
-    public static Response success(ErrorCode res) {
-        return success(res, null);
+        return new Response(ErrorCode.REQUEST_SUCCESS.getCode(), message);
     }
 
     public static Response success(ErrorCode res, BaseDTO dto) {
-        return new DataResponse<>(res, dto);
+        return new DataResponse(res, dto);
     }
 
     public static Response success(String message, BaseDTO dto) {
-        return new DataResponse<>(ErrorCode.REQUEST_SUCCESS.getCode(), message, dto);
+        return new DataResponse(ErrorCode.REQUEST_SUCCESS.getCode(), message, dto);
     }
 
-    public static Response error(Integer code, String msg) {
-        return error(code, msg, null);
-    }
-
-    public static Response error(Integer code, String msg, Object data) {
-        return new DataResponse<>(code, msg, data);
+    public static Response error(int code, String message) {
+        return new Response(code, message);
     }
 
     public static Response error(ErrorCode exceptionEnum) {
         return new Response(exceptionEnum);
-    }
-
-    public static Response error(String message) {
-        return error(ErrorCode.REQUEST_ERROR.getCode(), message);
     }
 
     public static Response error(BindingResult result) {

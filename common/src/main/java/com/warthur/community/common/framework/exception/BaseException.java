@@ -12,9 +12,9 @@ import lombok.EqualsAndHashCode;
 public abstract class BaseException extends RuntimeException {
     private static final long serialVersionUID = 5692243177785821696L;
 
-    private Integer code;
+    private int code;
 
-    public BaseException(Integer code, String message) {
+    public BaseException(int code, String message) {
         super(message);
         this.code = code;
     }

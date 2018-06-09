@@ -11,8 +11,9 @@ import java.io.Serializable;
  * Created by leo on 16/6/6.
  */
 @Data
-public class Response {
+public class Response<T> implements Serializable {
 
+    private static final long serialVersionUID = -5107029250213698775L;
     /**
      * code 200 - 正确； 非0为错误码
      */
@@ -26,10 +27,11 @@ public class Response {
         this.success = this.status == 200 || this.status >= 1000;
     }
 
-    public Response(ErrorCode res) {
-        this(res.getCode(), res.getMsg());
+    public Response(ErrorCode errorCode) {
+        this(errorCode.getCode(), errorCode.getMsg());
     }
 
+    @Override
     public String toString() {
         return JSON.toJSONString(this);
     }

@@ -11,7 +11,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * Created by warthur on 2018/5/8.
+ * 应用启动类
+ * @author warthur
+ * @date 2018/5/8
  */
 @SpringCloudApplication
 @EnableAsync

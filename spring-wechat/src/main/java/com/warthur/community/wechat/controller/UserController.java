@@ -18,7 +18,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * Created by warthur on 2018/5/8.
+ * 用户控制器
+ * @author warthur
+ * @date 2018/5/8
  */
 @RestController
 @Slf4j
