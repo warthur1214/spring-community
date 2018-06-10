@@ -2,7 +2,7 @@ package com.warthur.zuul.filter;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
-import com.warthur.community.common.ErrorCode;
+import com.warthur.community.common.entity.ErrorCode;
 import com.warthur.community.common.util.ResponseUtil;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

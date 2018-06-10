@@ -1,6 +1,5 @@
-package com.warthur.community.common;
+package com.warthur.community.common.entity;
 
-import com.warthur.community.common.framework.exception.CommunityException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -11,7 +10,7 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public enum ErrorCode implements ErrorEntity {
+public enum ErrorCode implements Error {
 
 	REQUEST_SUCCESS(200, "请求成功"),
 	PARAMS_ERROR(400, "参数错误"),
@@ -30,19 +29,8 @@ public enum ErrorCode implements ErrorEntity {
 	private String msg;
 
 	@Override
-	public CommunityException exception() {
-		return new CommunityException(this.code, this.msg);
+	public Error entity() {
+		return Response.valueOf(this.code, this.msg);
 	}
-
-	@Override
-	public Response success(BaseDTO baseDTO) {
-		return new DataResponse(this.code, this.msg, baseDTO);
-	}
-
-	@Override
-	public Response success() {
-		return new Response(this.code, this.msg);
-	}
-
 
 }

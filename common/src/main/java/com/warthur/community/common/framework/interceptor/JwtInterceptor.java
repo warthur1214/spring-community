@@ -1,7 +1,7 @@
 package com.warthur.community.common.framework.interceptor;
 
 import com.warthur.community.common.Constants;
-import com.warthur.community.common.ErrorCode;
+import com.warthur.community.common.entity.ErrorCode;
 import com.warthur.community.common.framework.annotation.AuthExclude;
 import com.warthur.community.common.framework.cache.StringRedisCache;
 import com.warthur.community.common.util.DateUtils;
@@ -9,7 +9,6 @@ import com.warthur.community.common.util.JwtUtil;
 import com.warthur.community.common.util.ResponseUtil;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

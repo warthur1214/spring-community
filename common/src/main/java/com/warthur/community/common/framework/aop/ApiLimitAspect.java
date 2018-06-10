@@ -1,11 +1,10 @@
 package com.warthur.community.common.framework.aop;
 
 import com.warthur.community.common.Constants;
-import com.warthur.community.common.ErrorCode;
+import com.warthur.community.common.entity.ErrorCode;
 import com.warthur.community.common.framework.annotation.ApiLimit;
 import com.warthur.community.common.framework.cache.StringRedisCache;
 import com.warthur.community.common.framework.exception.CommunityException;
-import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -16,10 +15,8 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 
 /**

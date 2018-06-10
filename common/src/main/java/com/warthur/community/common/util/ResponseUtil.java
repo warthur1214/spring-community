@@ -1,11 +1,14 @@
 package com.warthur.community.common.util;
 
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.warthur.community.common.*;
+import com.warthur.community.common.entity.*;
+import com.warthur.community.common.entity.Error;
 import org.springframework.validation.BindingResult;
 
-import javax.swing.text.html.parser.Entity;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -14,32 +17,20 @@ import java.util.stream.Collectors;
  */
 public class ResponseUtil {
 
-    public static Response success(ErrorEntity entity) {
-        return entity.success();
-    }
-
-    public static Response success(ErrorEntity entity, BaseDTO baseDTO) {
-        return entity.success(baseDTO);
-    }
-
     public static Response success() {
-        return new Response(ErrorCode.REQUEST_SUCCESS);
+        return Response.valueOf(ErrorCode.REQUEST_SUCCESS.getCode(), ErrorCode.REQUEST_SUCCESS.getMsg());
+    }
+
+    public static Response success(Error error) {
+        return new Response(error);
     }
 
     public static Response success(BaseDTO dto) {
         return new DataResponse(ErrorCode.REQUEST_SUCCESS, dto);
     }
 
-    public static Response success(String message) {
-        return new Response(ErrorCode.REQUEST_SUCCESS.getCode(), message);
-    }
-
-    public static Response success(ErrorCode res, BaseDTO dto) {
-        return new DataResponse(res, dto);
-    }
-
-    public static Response success(String message, BaseDTO dto) {
-        return new DataResponse(ErrorCode.REQUEST_SUCCESS.getCode(), message, dto);
+    public static Response success(Error error, BaseDTO baseDTO) {
+        return new DataResponse(error, baseDTO);
     }
 
     public static Response error(int code, String message) {

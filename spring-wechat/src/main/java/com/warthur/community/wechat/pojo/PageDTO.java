@@ -5,11 +5,12 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * Created by warthur on 2018/5/10.
+ *
+ * @author warthur
+ * @date 2018/5/10
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
-public class PageDTO extends BaseDTO {
+public class PageDTO implements BaseDTO {
 	private static final long serialVersionUID = 2174862597228242944L;
 
 	private Integer previous;

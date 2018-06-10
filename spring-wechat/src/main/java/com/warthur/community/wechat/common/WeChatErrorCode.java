@@ -1,11 +1,8 @@
 package com.warthur.community.wechat.common;
 
 
-import com.warthur.community.common.BaseDTO;
-import com.warthur.community.common.DataResponse;
-import com.warthur.community.common.ErrorEntity;
-import com.warthur.community.common.Response;
-import com.warthur.community.common.framework.exception.CommunityException;
+import com.warthur.community.common.entity.Error;
+import com.warthur.community.common.entity.Response;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -14,7 +11,7 @@ import lombok.Getter;
  */
 @AllArgsConstructor
 @Getter
-public enum WeChatErrorCode implements ErrorEntity {
+public enum WeChatErrorCode implements Error {
 
     SMS_SEND_SUCCESS(1000, "短信发送成功！");
 
@@ -22,19 +19,7 @@ public enum WeChatErrorCode implements ErrorEntity {
     private String msg;
 
     @Override
-    public CommunityException exception() {
-        return new CommunityException(this.code, this.msg);
+    public Error entity() {
+        return Response.valueOf(this.code, this.msg);
     }
-
-    @Override
-    public Response success(BaseDTO baseDTO) {
-        return new DataResponse(this.code, this.msg, baseDTO);
-    }
-
-    @Override
-    public Response success() {
-        return new Response(this.code, msg);
-    }
-
-
 }

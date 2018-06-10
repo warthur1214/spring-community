@@ -1,6 +1,6 @@
 package com.warthur.community.common.framework.exception;
 
-import com.warthur.community.common.ErrorCode;
+import com.warthur.community.common.entity.Error;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -13,11 +13,7 @@ public class CommunityException extends BaseException {
 
 	private static final long serialVersionUID = -1535065562881117634L;
 
-	public CommunityException(ErrorCode exceptionEnum) {
-		super(exceptionEnum.getMsg());
-	}
-
-	public CommunityException(int code, String message) {
-		super(code, message);
+	public CommunityException(Error error) {
+		super(error);
 	}
 }

@@ -1,5 +1,7 @@
-package com.warthur.community.common;
+package com.warthur.community.common.entity;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.warthur.community.common.BaseDTO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -15,13 +17,12 @@ public class DataResponse extends Response {
 
 	private BaseDTO data;
 
-
 	public DataResponse(int status, String message, BaseDTO data) {
 		super(status, message);
 		this.data = data;
 	}
 
-	public DataResponse(ErrorCode res, BaseDTO data) {
+	public DataResponse(Error res, BaseDTO data) {
 		super(res);
 		this.data = data;
 	}

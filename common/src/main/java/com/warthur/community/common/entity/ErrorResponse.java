@@ -1,10 +1,12 @@
-package com.warthur.community.common;
+package com.warthur.community.common.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * Created by warthur on 2018/5/28.
+ *
+ * @author warthur
+ * @date 2018/5/28
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -13,7 +15,7 @@ public class ErrorResponse<T> extends Response {
 
 	private T desc;
 
-	public ErrorResponse(ErrorCode res, T desc) {
+	public ErrorResponse(Error res, T desc) {
 		super(res);
 		this.desc = desc;
 	}

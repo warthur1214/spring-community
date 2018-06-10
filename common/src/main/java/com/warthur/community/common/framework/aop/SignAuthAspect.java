@@ -1,7 +1,7 @@
 package com.warthur.community.common.framework.aop;
 
 import com.warthur.community.common.Constants;
-import com.warthur.community.common.ErrorCode;
+import com.warthur.community.common.entity.ErrorCode;
 import com.warthur.community.common.bean.UserInfo;
 import com.warthur.community.common.framework.cache.Cache;
 import com.warthur.community.common.util.ResponseUtil;

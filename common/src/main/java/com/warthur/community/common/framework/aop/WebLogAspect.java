@@ -1,6 +1,7 @@
 package com.warthur.community.common.framework.aop;
 
 import com.alibaba.fastjson.JSON;
+import com.warthur.community.common.entity.DataResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -23,6 +24,9 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * @author warthur
+ */
 @Component
 @Aspect
 @Slf4j

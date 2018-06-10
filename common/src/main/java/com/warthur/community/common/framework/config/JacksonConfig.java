@@ -4,21 +4,23 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializerProvider;
+import com.warthur.community.common.BaseDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * 自定义的JSON转换MAPPER
+ * @author warthur
  */
-
 @Configuration
 @Order(-20)
 @Slf4j
-public class CustomJacksonConfig {
+public class JacksonConfig {
 
 	@Bean(name = "jacksonMapper")
 	public CustomObjectMapper initCustomObjectMapper() {
@@ -39,11 +41,19 @@ public class CustomJacksonConfig {
 
 	}
 
-	// null的JSON序列
 	private class NullSerializer extends JsonSerializer<Object> {
+		@Override
 		public void serialize(Object value, JsonGenerator jgen,
-		                      SerializerProvider provider) throws IOException {
-			jgen.writeString("");
+							  SerializerProvider provider) throws IOException {
+			if (value instanceof BaseDTO) {
+				jgen.writeString("{}");
+			} else if (value instanceof List) {
+				jgen.writeString("[]");
+			} else {
+				jgen.writeString("");
+			}
 		}
+
+
 	}
 }

@@ -1,10 +1,13 @@
 package com.warthur.community.common.framework.exception;
 
-import com.warthur.community.common.ErrorCode;
+import com.warthur.community.common.entity.Error;
+import com.warthur.community.common.entity.ErrorCode;
+import com.warthur.community.common.entity.Response;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
+ * @author warthur
  * @Description: 异常基类
  */
 @EqualsAndHashCode(callSuper = true)
@@ -23,7 +26,8 @@ public abstract class BaseException extends RuntimeException {
         this(ErrorCode.INTERNAL_ERROR.getCode(), message);
     }
 
-    public BaseException(ErrorCode error) {
-        this(error.getCode(), error.getMsg());
+    public BaseException(Error error) {
+        this(((Response) error.entity()).getStatus(), ((Response) error.entity()).getMessage());
     }
+
 }

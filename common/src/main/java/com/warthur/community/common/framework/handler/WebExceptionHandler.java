@@ -1,10 +1,9 @@
 package com.warthur.community.common.framework.handler;
 
-import com.warthur.community.common.Response;
+import com.warthur.community.common.entity.Response;
 import com.warthur.community.common.framework.exception.ServerException;
 import com.warthur.community.common.framework.exception.CommunityException;
 import com.warthur.community.common.util.ResponseUtil;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;

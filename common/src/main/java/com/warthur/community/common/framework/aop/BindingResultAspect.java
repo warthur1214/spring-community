@@ -1,5 +1,7 @@
 package com.warthur.community.common.framework.aop;
 
+import com.warthur.community.common.entity.ErrorCode;
+import com.warthur.community.common.framework.exception.CommunityException;
 import com.warthur.community.common.util.ResponseUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -13,6 +15,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
+/**
+ * @author warthur
+ */
 @Component
 @Aspect
 @Slf4j
@@ -36,6 +41,7 @@ public class BindingResultAspect {
     public Object doAround(ProceedingJoinPoint joinPoint, BindingResult result) {
         // Error res = new BeanPropertyBindingResult(, Object.class.getSimpleName());
         // validator.validate();
+
         // 判断
         if (result.hasErrors()) {
             return ResponseUtil.error(result);

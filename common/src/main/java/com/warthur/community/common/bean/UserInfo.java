@@ -4,9 +4,11 @@ import com.warthur.community.common.BaseDTO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@EqualsAndHashCode(callSuper = true)
+/**
+ * @author warthur
+ */
 @Data
-public class UserInfo extends BaseDTO {
+public class UserInfo implements BaseDTO {
 
     private static final long serialVersionUID = -5451567723505258159L;
 

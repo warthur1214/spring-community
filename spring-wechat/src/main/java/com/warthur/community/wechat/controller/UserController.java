@@ -1,10 +1,9 @@
 package com.warthur.community.wechat.controller;
 
-import com.warthur.community.common.ErrorCode;
-import com.warthur.community.common.Response;
+import com.warthur.community.common.entity.ErrorCode;
+import com.warthur.community.common.entity.Response;
 import com.warthur.community.common.bean.UserInfo;
 import com.warthur.community.common.framework.annotation.AuthExclude;
-import com.warthur.community.common.framework.exception.CommunityException;
 import com.warthur.community.common.util.ResponseUtil;
 import com.warthur.community.wechat.pojo.param.UserParam;
 import com.warthur.community.wechat.service.UserService;
