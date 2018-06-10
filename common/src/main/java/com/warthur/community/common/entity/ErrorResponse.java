@@ -16,7 +16,7 @@ public class ErrorResponse<T> extends Response {
 	private T desc;
 
 	public ErrorResponse(Error res, T desc) {
-		super(res);
+		super(res.entity().getStatus(), res.entity().getMessage());
 		this.desc = desc;
 	}
 }

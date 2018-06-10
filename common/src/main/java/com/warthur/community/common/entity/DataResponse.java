@@ -17,13 +17,8 @@ public class DataResponse extends Response {
 
 	private BaseDTO data;
 
-	public DataResponse(int status, String message, BaseDTO data) {
-		super(status, message);
-		this.data = data;
-	}
-
 	public DataResponse(Error res, BaseDTO data) {
-		super(res);
+		super(res.entity().getStatus(), res.entity().getMessage());
 		this.data = data;
 	}
 }

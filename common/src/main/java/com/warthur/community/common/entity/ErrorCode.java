@@ -29,7 +29,7 @@ public enum ErrorCode implements Error {
 	private String msg;
 
 	@Override
-	public Error entity() {
+	public Response entity() {
 		return Response.valueOf(this.code, this.msg);
 	}
 

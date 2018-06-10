@@ -1,7 +1,10 @@
 package com.warthur.community.common.entity;
 
 import com.alibaba.fastjson.JSON;
+import com.warthur.community.common.framework.exception.CommunityException;
+import com.warthur.community.common.framework.exception.ServerException;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.Serializable;
 
@@ -11,7 +14,8 @@ import java.io.Serializable;
  * @date 16/6/6
  */
 @Data
-public class Response implements Error, Serializable {
+@Slf4j
+public class Response implements Serializable {
 
     private static final long serialVersionUID = -5107029250213698775L;
 
@@ -25,19 +29,11 @@ public class Response implements Error, Serializable {
         this.success = this.status == 200 || this.status >= 1000;
     }
 
-    public Response(Error error) {
-        this(((Response) error.entity()).getStatus(), ((Response) error.entity()).getMessage());
-    }
-
     @Override
     public String toString() {
         return JSON.toJSONString(this);
     }
 
-    @Override
-    public Response entity() {
-        return this;
-    }
 
     public static Response valueOf(int code, String message) {
         return new Response(code, message);

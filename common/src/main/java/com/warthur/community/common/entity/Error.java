@@ -9,7 +9,6 @@ public interface Error {
      * 包装ErrorEntity object
      * @return ErrorEntity
      */
-    Error entity();
-
+    Response entity();
 
 }

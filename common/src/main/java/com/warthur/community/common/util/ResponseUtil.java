@@ -22,7 +22,7 @@ public class ResponseUtil {
     }
 
     public static Response success(Error error) {
-        return new Response(error);
+        return error.entity();
     }
 
     public static Response success(BaseDTO dto) {
@@ -37,8 +37,8 @@ public class ResponseUtil {
         return new Response(code, message);
     }
 
-    public static Response error(ErrorCode exceptionEnum) {
-        return new Response(exceptionEnum);
+    public static Response error(Error error) {
+        return error.entity();
     }
 
     public static Response error(BindingResult result) {

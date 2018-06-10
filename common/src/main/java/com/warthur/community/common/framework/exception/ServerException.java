@@ -1,5 +1,6 @@
 package com.warthur.community.common.framework.exception;
 
+import com.warthur.community.common.entity.Error;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -14,7 +15,15 @@ public class ServerException extends BaseException {
 
 	private static final long serialVersionUID = -1535065562881117634L;
 
-	private ServerException(Integer code, String message) {
+	public ServerException(Error error) {
+		super(error);
+	}
+
+	public ServerException(String message) {
+		super(message);
+	}
+
+	public ServerException(Integer code, String message) {
 		super(code, message);
 	}
 }

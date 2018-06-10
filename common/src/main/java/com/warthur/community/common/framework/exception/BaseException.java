@@ -27,7 +27,7 @@ public abstract class BaseException extends RuntimeException {
     }
 
     public BaseException(Error error) {
-        this(((Response) error.entity()).getStatus(), ((Response) error.entity()).getMessage());
+        this(error.entity().getStatus(), error.entity().getMessage());
     }
 
 }
