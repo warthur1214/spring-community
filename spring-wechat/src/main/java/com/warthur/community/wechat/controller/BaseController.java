@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Created by warthur on 2018/5/8.
+ * 控制器基类
+ * @author warthur
+ * @date 2018/5/8
  */
 @RestController
 @Slf4j

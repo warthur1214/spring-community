@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Created by warthur on 2018/5/10.
+ * 消息处理控制器
+ * @author warthur
+ * @date 2018/5/10
  */
 @RestController
 @Api(description = "消息控制器")
@@ -29,7 +31,6 @@ public class MessageController {
 	@PostMapping(value = "/messages")
 	@ApiOperation("发送短信验证码接口")
 	@AuthExclude
-	// @ApiLimit(counts = 1)
 	public Response sendSmsMessage(@Validated(Message.MsgSend.class) @RequestBody Message message,
 								   BindingResult result) {
 

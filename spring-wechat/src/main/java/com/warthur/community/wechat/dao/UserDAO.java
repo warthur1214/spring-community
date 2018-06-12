@@ -1,8 +1,10 @@
 package com.warthur.community.wechat.dao;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
 
+/**
+ * @author warthur
+ */
 @Mapper
 public interface UserDAO {
 

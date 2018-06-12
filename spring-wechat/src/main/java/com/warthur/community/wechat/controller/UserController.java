@@ -47,9 +47,6 @@ public class UserController extends BaseController {
 	@AuthExclude
 	public Response addUser(@Validated @RequestBody UserParam reqParam, BindingResult result) {
 
-		if (result.hasErrors()) {
-            return ResponseUtil.error(result);
-        }
 		UserInfo userInfo = userService.addUserByOpenId(reqParam);
 
 		return ResponseUtil.success(userInfo);
