@@ -6,7 +6,9 @@ import org.apache.commons.codec.digest.DigestUtils;
 import java.util.UUID;
 
 /**
- * Created by warthur on 2018/5/21.
+ * 字符串处理类
+ * @author warthur
+ * @date 2018/5/21
  */
 @Slf4j
 public class StringUtils extends org.apache.commons.lang3.StringUtils {

@@ -11,9 +11,12 @@ import java.io.ByteArrayInputStream;
 import java.io.StringWriter;
 
 /**
- * Created by warth on 2018/3/12.
+ * jaxb 工具类
+ * @author warth
+ * @date 2018/3/12
  */
 @Slf4j
+@SuppressWarnings("unchecked")
 public final class JaxbUtil {
 
 	//xml转换成bean
@@ -21,14 +24,11 @@ public final class JaxbUtil {
 	public static <T> T parseToBean(String xmlstr, Class<? extends BaseXml>... beans) {
 		T bean = null;
 		try {
-			bean = (T) beans[0].newInstance();
 			JAXBContext jaxbContext = JAXBContext.newInstance(beans);
 			Unmarshaller um = jaxbContext.createUnmarshaller();
 			bean = (T) um.unmarshal(new ByteArrayInputStream(xmlstr.getBytes()));
 		} catch (JAXBException e) {
 			log.error("解析xml失败！");
-		} catch (IllegalAccessException | InstantiationException e) {
-			log.error("对象初始化失败！");
 		}
 
 		return bean;
