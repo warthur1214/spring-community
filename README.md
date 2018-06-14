@@ -8,7 +8,7 @@
     4. 需要携带signature的api，需要添加timestamp参数，格式为毫秒级时间戳；
     5. timestamp参数与服务器时间戳误差超过3000（数值待定），则判断timestamp非法；
     6. 请求体（request body）统一使用JSON数据格式
-    7. 请求的url里如果是 {key} 则为资源类型参数，替换为应传参数的值即可；
+    7. 请求的url如果带有 {key} 则为资源类型参数，替换为应传参数key的值即可；
 二. 请求方式：
 
     GET 用于获取数据；
